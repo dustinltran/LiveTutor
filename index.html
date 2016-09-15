@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    div.container {
+    width:100%
+    border:1px solid gray;
+    }    
+</style>    
+</head>
+<body style="background-color: powderblue; font-size:120%;">
+<div class="container">  
+<h1 style="color:Blue; font-size:300%; font-family: verdana;text-align:center;">
+    <b>Welcome to LiveTutor</b>  
+</h1>
+<hr>
+<form action="">
+SID:<br>
+<input type="email" name ="userid" size="15" style="font-size:100%;">
+<br>
+Password:<br>
+<input type="password" name ="psw" size ="15" style="font-size:100%;">
+
+<button  type="submit" style="color:blue; font-size:100%;background-color:powderblue;">Login</button> 
+<hr>
+<h2 style="color:black; font-size:150%; font-family:verdana; text-align:center;"> Sign Up</h2>
+
+Lastname:<br>    
+<input type ="text" name ="lastname" size="15">
+<br>
+Firstname:<br>
+<input type="text" name = "firstname" size="15">
+<br>
+Email:<br>
+<input type="email" name = "mail" size="15">
+<br>
+Password:<br>
+<input type="password" name = "psw" size="15">
+<br>
+<br>
+<button type="submit" style="color:blue;font-size:100%;background-color:powderblue;">sign up</button>
+    
+    
+</form>    
+
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA4_BZH7e7JnFx5ACuY0jTHEeB0i9rqMHw",
+    authDomain: "livetutor-acbbe.firebaseapp.com",
+    databaseURL: "https://livetutor-acbbe.firebaseio.com",
+    storageBucket: "livetutor-acbbe.appspot.com",
+    messagingSenderId: "834892008524"
+  };
+  firebase.initializeApp(config);
+</script>
+    
+    
+    
+    
+    
+    
+    
+   </div> 
+    </body>
+<html/>

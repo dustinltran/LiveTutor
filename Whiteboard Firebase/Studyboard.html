@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 30px;
+        padding: 0px;
+      }
+    </style>
+	
+  </head> 
+  <body>
+  <div><!--  Tool Bar -->
+		Line Color:
+		<select id="selectColor">
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="blue">Blue</option>
+			<option value="green">Green</option>
+			<option value="white">White</option>
+		</select>
+		
+		Line Thickness:
+		<select id="selectThick">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="20">10</option>
+			<option value="40">20</option>
+			<option value="60">30</option>
+			<option value="100">50</option>
+			<option value="200">100</option>
+		</select>
+		
+		<!--Clear button-->
+		<input type="submit" id="clear" value="clear"/>
+	
+	<div>
+	<div id="canvasDiv" style="cursor:crosshair; float:left; height:520px; border:1px solid #000000">
+		<canvas id="myCanvas" width="720" height="520"></canvas>
+    </div>
+	
+	<!--CHAT UI-->
+	<div style="float:left">
+		<div id="userList" style="height:190px; width:240px; border:1px solid #000000; overflow:scroll; overflow-x: hidden;"> Chat List</div>
+		<div id="chat" style="height:260px; width:240px; border:1px solid #000000; overflow:scroll; overflow-x: hidden;"> CHAT</div>
+		<div id="inputContainer" style="width:240px;"><input type="text" id="chatOut" style="width:237px; height:30px;"/></div>
+		<div id="submitContainer" style="width:240px;"><input type="submit" id="chatSend" value="Send" style="width:240px; height:30px"/></div>
+		<div id="submitContainer" style="width:240px;"><input type="submit" id="disconnectbutton" value="Disconnect" style="width:240px; height:30px"/></div>
+	</div>
+
+
+	<!--Load application code-->
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+	<script src="StudyBoard.js"></script>
+	<script src="FirebaseStudyboard.js"></script>
+	
+		
+  </body>
+</html>      
+
+
+
+</html>
+

@@ -218,9 +218,6 @@ display: none;
 .clear{
 		clear:both;
 	}
-#background-image1{
-    background-image: url(img/TestImage.jpeg);
-}
 
 #login-card{
   display: none;

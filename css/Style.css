@@ -15,6 +15,15 @@ label {
   font-size: 1.2em;
 }
 
+img {
+  padding-top: 5px;
+  height: 45px;
+}
+
+.navbar-search {
+  padding-top: 5px;
+}
+
 .drawer-separator {
   height: 1px;
   background-color: #dcdcdc;
@@ -209,3 +218,18 @@ display: none;
 .clear{
 		clear:both;
 	}
+#background-image1{
+    background-image: url(img/TestImage.jpeg);
+}
+
+#login-card{
+  display: none;
+}
+
+#register-card{
+  display: none;
+}
+
+#add-class-card{
+  display: none;
+}

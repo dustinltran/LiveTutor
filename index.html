@@ -121,226 +121,49 @@
               </a>
       </nav> -->
       </div>    
- 
-    <div style="background-image:url(img/TestImage.jpeg); background-repeat:no-repeat;">
-      <img src="img/TestImge.jpeg" style="visibility: hidden;" />
-        <!--Main Page -->
-        <main class="mdl-layout__content page-content">
-          <ul class="background-main">
-            <li><span id="background-image1">Image 01</span>                  
-                <!-- Need to make smaller if smaller screen -->
-                <div class="mdl-navigation__link navbar-search">
-                  <form id="search" method="get" action="http://www.google.com">
-                    <input type="text" id="tfq" class="tftextinput2" name="q" size="80" maxlength="100" Placeholder="Search our website">
-                    <input type="submit" value="Search" class="tfbutton2">
-                  </form>
-                  <div class="clear"></div>
-                </div>
-            </li>
-          </ul>
-            
-            <!--Card Section -->
-            <section class="mdl-grid">
-                
-                <!-- Center Card -->
-                <div class="mdl-layout-spacer"></div>
-                  
-                <!-- Login Card -->
-                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell" id="login-card">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text mdl-color-text--white">Login</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-typography--headline text-center">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="facebook-button">
-                                <img src="facebox.png" alt="facebook icon" class="social-icon"> <span class="opacity4">facebook</span>
-                              </button>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="github-button">
-                                <img src="images.png" alt="github icon" class="social-icon"> <span class="opacity4">github</span>
-                              </button>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="google-button">
-                                <img src="images%20(1).png" alt="google icon" class="social-icon"> <span class="opacity4">google</span>
-                              </button>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="twitter-button">
-                                <img src="images.jpeg" alt="twitter icon" class="social-icon"> <span class="opacity4">twitter</span>
-                              </button>
-                        <div class="text-center">- or -</div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="username-input">
-                            <label class="mdl-textfield__label" for="username-input">Username</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="password-input-mdl-textfield">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="password" id="password-input">
-                            <label class="mdl-textfield__label" for="password-input">Password</label>
-                        </div>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="register-button">
-                                Sign Up
-                              </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--colored" id="login-button" >Login</button>
-                    </div>
-                </div>
-                
-                <!-- Register Card -->
-                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell" id="register-card">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text mdl-color-text--white">Register</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-typography--headline text-center" id="register-supporting-text">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="email" id="email">
-                            <label class="mdl-textfield__label" for="username">Email</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="display-name">
-                            <label class="mdl-textfield__label" for="display-name">Display Name</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="password" id="registration-input-password">
-                            <label class="mdl-textfield__label" for="registration-input-password">Password</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="registration-input-password2-mdl-textfield">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="password" id="registration-input-password2">
-                            <label class="mdl-textfield__label" for="registration-input-password2">Re-Enter Password</label>
-                        </div>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="back-button">
-                                Back
-                              </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--colored" id="submit-button" >Continue</button>
-                    </div>
-                </div>
-                
-                
-                
-                <!-- add class Card -->
-                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell" id="add-class-card">
-                    <div class="mdl-card__title">
-                        <h1 class="mdl-card__title-text mdl-color-text--white">Add Class</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-typography--headline text-center" id="register-supporting-text">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="subject">
-                            <label class="mdl-textfield__label" for="subject">Class Subject</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="name">
-                            <label class="mdl-textfield__label" for="name">Class Name </label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="date">
-                            <label class="mdl-textfield__label" for="date">Date</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="registration-input-password2-mdl-textfield">
-                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="time">
-                            <label class="mdl-textfield__label" for="time">Time</label>
-                        </div>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="back-button2">
-                                Back
-                              </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--colored" id="add-button3" >Addme</button>
-                    </div>
-                </div>
-                
-                
-                <!-- main Card 
-                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell" id="main-card">
-                    <div>
-                        <h1 >Main Page</h1>
-                    </div>
-                    <div >
-                        
-                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="view-button">
-                                view
-                              </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--colored" id="add-class-button" >Add class</button>
-                    </div>
-                </div>
-                
-                </div>
+
+        <!--Background image carousel-->
+      <div id="theCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+              <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+              <!--
+              <li data-target="#theCarousel" data-slide-to="1"></li>
+              <li data-target="#theCarousel" data-slide-to="2"></li> 
+              -->
+          </ol>
+
+          <!-- Start of Carousel -->
+          <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                  <img src="img/TestImage.jpeg" alt="Kitchen">
+                  <div class="carousel-caption">
+                      <!--Text option 1-->
+                  </div>
+              </div>
+              <!-- </div> (Dont this this is needed)
+
+              <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span></a>
+
+              <a class="right carousel-control" href="#theCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span></a>
                 -->
-                
-                
-                
-                
-                
-                
-                
-                
-                <!-- Profile Card -->
-                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell"  id="profile-card">
-                    <div class="mdl-card__title">
-                      <h1 class="mdl-card__title-text mdl-color-text--white">Update Your Profile</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-typography--headline text-center" id="register-supporting-text">
-                     <div class = "container"></div> 
-                        <h3 style="color: black; text-aligh:left; font-size:100%">Proficient Subjects: (Check all that applies)</h3>
-                        <input type = "checkbox" class = "checkbox" value = "English">English
-                        <input type = "checkbox" class = "checkbox" value = "Mathmatic">Mathmatic
-                        <input type = "checkbox" class = "checkbox" value = "Physic">Physic
-                        <input type = "checkbox" class = "checkbox" value = "Biology">Biology
-                        <input type = "checkbox" class = "checkbox" value = "Chemistry">Chemistry
-                        <input type = "checkbox" class = "checkbox" value = "Computer Science">Computer Science
-                        <hr>
-                    <form>
-              
-              Describe a little more about yourself: <textarea name="description" id="description" cols="35" rows="8" style="font-size:20px;"></textarea>
-            
-            </form>    
-                        
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="back1-button">
-                                Back
-                              </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <button class="mdl-button mdl-button--colored" id="confirm-button" >Confirm</button>
-                    </div>
-                </div>
-                
-                <!-- Logout Card -->
-                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell"  id="logout-card">
-                    <div class="mdl-card__title">
-                      <h1 class="mdl-card__title-text mdl-color-text--white">Signed In</h1>
-                    </div>
-                    <div class="mdl-card__supporting-text mdl-typography--headline text-center" id="register-supporting-text">
-                      <h6 class="text-left">You are now signed in.  To sign out or update your account click on your display name in the top right corner.</h6>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
-                        <div class="mdl-layout-spacer"></div>
-                        <a class="mdl-button mdl-button--colored" href="/">home</a>
-                    </div>
-                </div>                       
-                <!-- Center Card -->
-                <div class="mdl-layout-spacer"></div>
-                
-            <!--/Card Section -->
-            
-            </section>
-            
-        </main>
+          </div> 
+        <!-- Need to make smaller if smaller screen -->
+        <div class="mdl-navigation__link navbar-search">
+          <form id="search" method="get" action="http://www.google.com">
+            <input type="text" id="tfq" class="tftextinput2" name="q" size="80" maxlength="100" Placeholder="Search our website">
+            <input type="submit" value="Search" class="tfbutton2">
+          </form>
+          <div class="clear"></div>
+        </div>
+
       </div>
-        <!--Main Page Footer Section -->
-        <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer__left-section">
-                <div class="mdl-logo">
-                    About Us:
-                </div>
-                <ul class="mdl-mini-footer__link-list">
-                    <li><a href="https://firebase.google.com/docs/auth/">Members</a></li>
-                    <li><a href="https://firebase.google.com/docs/reference/js/index-all">Contact</a></li>
-                </ul>
-            </div>
-        </footer>
-        
+      <!-- End of Carousel -->
+
+
+
     </div>
     
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>

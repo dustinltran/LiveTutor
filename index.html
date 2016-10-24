@@ -124,14 +124,6 @@
 
         <!--Background image carousel-->
       <div id="theCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Need to make smaller if smaller screen -->
-        <div class="mdl-navigation__link navbar-search">
-          <form id="search" method="get" action="http://www.google.com">
-            <input type="text" id="tfq" class="tftextinput2" size="80" maxlength="100" Placeholder="Search our website">
-            <input type="submit" value="Search" class="tfbutton2">
-          </form>
-          <div class="clear"></div>
-        </div>
           <!-- Indicators
           <ol class="carousel-indicators">
               <li data-target="#theCarousel" data-slide-to="0" class="active">                    </li>
@@ -146,31 +138,66 @@
                   <img src="img/TestImage.jpeg" alt="Kitchen">
                   <div class="carousel-caption">
                     <!-- TEXT -->
-        <!-- Need to make smaller if smaller screen -->
-        <div class="mdl-navigation__link navbar-search">
-          <form id="search" method="get" action="http://www.google.com">
-            <input type="text" id="tfq" class="tftextinput2" size="80" maxlength="100" Placeholder="Search our website">
-            <input type="submit" value="Search" class="tfbutton2">
-          </form>
-          <div class="clear"></div>
-        </div>
+                    <div class="col-xs-5 col-sm-3 pull-right">
+                      <form class="navbar-form" role="search">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                          <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
               </div>
-              <!-- </div> (Dont this this is needed)
+            </div>
 
-              <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+             <!-- <a class="left carousel-control" href="#theCarousel" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left"></span></a>
 
               <a class="right carousel-control" href="#theCarousel" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span></a>
-                -->
-          </div> 
+                  <span class="glyphicon glyphicon-chevron-right"></span></a> -->
 
 
       </div>
       <!-- End of Carousel -->
 
-
+                      <!-- Login Card -->
+                <div class="login-card mdl-card mdl-shadow--2dp mdl-cell" id="login-card">
+                    <div class="mdl-card__title">
+                        <h1 class="mdl-card__title-text mdl-color-text--white">Login</h1>
+                    </div>
+                    <div class="mdl-card__supporting-text mdl-typography--headline text-center">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="facebook-button">
+                                <img src="facebox.png" alt="facebook icon" class="social-icon"> <span class="opacity4">facebook</span>
+                              </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="github-button">
+                                <img src="images.png" alt="github icon" class="social-icon"> <span class="opacity4">github</span>
+                              </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="google-button">
+                                <img src="images%20(1).png" alt="google icon" class="social-icon"> <span class="opacity4">google</span>
+                              </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect oauth-login-button" style ="background-color:azure;" id="twitter-button">
+                                <img src="images.jpeg" alt="twitter icon" class="social-icon"> <span class="opacity4">twitter</span>
+                              </button>
+                        <div class="text-center">- or -</div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="text" id="username-input">
+                            <label class="mdl-textfield__label" for="username-input">Username</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="password-input-mdl-textfield">
+                            <input class="mdl-textfield__input mdl-color-text--orange-500" type="password" id="password-input">
+                            <label class="mdl-textfield__label" for="password-input">Password</label>
+                        </div>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border intro-card-actions">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="register-button">
+                                Sign Up
+                              </a>
+                        <div class="mdl-layout-spacer"></div>
+                        <button class="mdl-button mdl-button--colored" id="login-button" >Login</button>
+                    </div>
+                </div>
 
     </div>
     

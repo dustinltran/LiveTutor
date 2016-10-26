@@ -6252,6 +6252,7 @@ button.close {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   line-height: 1;
+  margin: auto;
 }
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {

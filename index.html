@@ -66,29 +66,9 @@
               </div> <!-- Collapsed Menu -->
             </div> <!--End of container-fluid-->
         </nav> <!-- End of NavBar-->
-      <!-- Navigation 
-      <nav class="mdl-navigation">
-          <div class="mdl-navigation__link">
-            <form id="search" method="get" action="http://www.google.com">
-             <input type="text" id="tfq" class="tftextinput2" name="q" size="80" maxlength="100" Placeholder="Search our website">
-             <input type="submit" value="Search" class="tfbutton2">
-            </form>
-            <div class="clear"></div>
-          </div>
-          <a class="mdl-navigation__link" href="javascript:void(0)" id="sign-in-button">
-              <i class="material-icons">account_circle</i> <span id="account">Sign In</span>
-          </a>
-          <a class="mdl-navigation__link" href="javascript:void(0)" id="account-menu-button">
-              
-          </a>
-          
-          <a class="mdl-navigation__link" href="javascript:void(0)" id="sign-up-button"><i class="material-icons">mood_bad</i><span id="sign-up">
-             Sign out</span>
-              </a>
-      </nav> -->
       </div>    
 
-        <!--Background image carousel-->
+      <!--Background image carousel-->
       <div id="theCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators
           <ol class="carousel-indicators">
@@ -109,7 +89,8 @@
                         <div class="input-group">
                           <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
                           <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>
+                            </button>
                           </div>
                         </div>
                       </form>
@@ -128,40 +109,40 @@
       </div>
       <!-- End of Carousel -->
       <!-- Modal -->
-        <div id="loginModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+      <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-      
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h3 class="modal-title">Login</h3>
+          <!-- Modal content-->
+          <div class="modal-content">
+
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title">Login</h3>
+              </div>
+              <div class="modal-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                          <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" data-bind="email">
+                      </div>
                     </div>
-                    <div class="modal-body">
-                        <form role="form">
-                          <div class="row">
-                            <div class="form-group col-sm-6">
-                                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" data-bind="email">
-                            </div>
-                          </div>
 
-                          <div class="row">
-                            <div class="form-group col-sm-6">
-                              <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" data-bind="password">
-                            </div>
-                          </div> 
-                          <a href="" type="submit" id="signup-btn" value="Register" class="btn btn-info btn-block">Login</a>
-                          <a href="#registerModal" class="dropdown-toggle" data-toggle="modal" data-dismiss="modal"><small>Register</small></a>
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" data-bind="password">
+                      </div>
+                    </div> 
+                    <a href="" type="submit" id="signup-btn" value="Register" class="btn btn-info btn-block">Login</a>
+                    <a href="#registerModal" class="dropdown-toggle" data-toggle="modal" data-dismiss="modal"><small>Register</small></a>
 
-                        </form>
-                    </div>
-                    <!--Footer if needed-->
-                    <!-- <div class="modal-footer">
-                    </div> -->
-                </div>
-
+                  </form>
+              </div>
+              <!--Footer if needed-->
+              <!-- <div class="modal-footer">
+              </div> -->
             </div>
+
+          </div>
         </div>
       <!-- Modal -->
         <div id="registerModal" class="modal fade" role="dialog">

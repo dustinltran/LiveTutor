@@ -105,7 +105,7 @@ img {
 }
 
 .login-card > .mdl-card__title {
-  background: url('Picture1.png') center / cover;
+  
 
 }
 
@@ -127,7 +127,8 @@ img {
 
 #account-menu-button {
   text-transform: capitalize;
-  display:none;
+  display: none;
+
 }
 
 
@@ -139,28 +140,48 @@ img {
   display: none;
 }
 
-#profile-card {
-position:fixed;
-    width: 45%;
-    height: 80%;
-    top: 65px;
-    left: 400px;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    background: white;
-display: none;
+#main-card {
+    position:fixed;
+  width: 70%;
+    right:195px;
+    height: 70%;
+display: none;    
+}
 
+#add-class-card {
+display: none
+}
+
+#profile-card {
+display: none;
+width: 1000%;
+right:5px;
+background-color: azure;
 }
 
 #logout-card {
   display: none;
 }
+
+#table-card1 {
+ display: none; 
+}
+#table-card2 {
+ display: none; 
+}
+#table-card3 {
+ display: none; 
+}
 #login-card {
   display: none;
 }
-
-
+#profile-page
+{
+  display: none;
+}
+#register-card {
+  display: none;
+}
 #secure-card {
   display: none;
 }
@@ -219,6 +240,7 @@ display: none;
 		clear:both;
 	}
 
+<<<<<<< HEAD:css/Style.css
 #login-card{
   display: none;
 }
@@ -229,4 +251,28 @@ display: none;
 
 #add-class-card{
   display: none;
+    background-color:  #F0FFFF;
+}
+
+table#myTableData1 th {
+    background-color: #90ee90;
+    
+}
+
+
+table#myTableData2 tr:nth-child(even) {
+    background-color: #F0FFFF;
+}
+
+table#myTableData2 th {
+    background-color: #90ee90;
+    
+}
+
+table#myTableData3 tr:nth-child(even) {
+    background-color: #F0FFFF;
+}
+
+table#myTableData3 th {
+    background-color: #90ee90;
 }

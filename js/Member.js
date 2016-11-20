@@ -30,10 +30,12 @@
 
 
     function GetSignUp() {
-      var text = document.getElementById('description').value;
-      var email = document.getElementById('email').value;
-      var password = document.getElementById('registration-input-password').value;
-      var displayName = document.getElementById('display-name').value;  
+      console.log("NO");
+      var firstName = document.getElementById('first_name').value;
+      var lastName = document.getElementById('last_name').value;;
+      var email = document.getElementById('register_email').value;
+      var password = document.getElementById('register_password').value;
+      var passwordConfirm = document.getElementById('password_confirmation');
       if (email.indexOf('&') !==-1 || email.indexOf('?') !==-1 || email.indexOf('$') !==-1 || email.indexOf('^') !==-1 || email.indexOf('*') !==-1){
         alert('Enter a valid email address');
           return;
@@ -42,16 +44,22 @@
         alert('Password is too weak.');
           return;
       }
+      if(password !== passwordConfirm){
+      	alert('Password mismatched!');
+      	return;
+      }
       UserDescription();
       firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
       firebase.database().ref('/users/' + result.uid).set({
            fields: str,    
-           fullname: displayName, 
+           firstname: firstName,
+           lastname: lastName, 
            description: text   
         });      
       
         alert('You successfully created your account!');
       SendEmailVerification();
+      window.open("./courses.html", "_self")
       document.getElementById('register-card').style.display = "none"; 
       document.getElementById('profile-card').style.display = "none";       
         });
@@ -588,5 +596,3 @@
       window.onload = function() {
       initApp();
         };
-    
-</script>

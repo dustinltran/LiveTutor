@@ -1,5 +1,5 @@
 
-
+console.log(firebase.app().name); 
 var database = firebase.database();
   // <---------- USER SIGN IN ------->>  //
 
@@ -72,7 +72,6 @@ var database = firebase.database();
 		  // document.getElementById('profile-card').style.display = "none";       
     //     });
       alert('Complete Authentication');
-      location.replace("../courses.html");
      }
 
 

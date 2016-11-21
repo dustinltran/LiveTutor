@@ -1,4 +1,6 @@
-      
+
+
+var database = firebase.database();
   // <---------- USER SIGN IN ------->>  //
 
 
@@ -30,12 +32,12 @@
 
 
     function GetSignUp() {
-      console.log("NO");
+
       var firstName = document.getElementById('first_name').value;
       var lastName = document.getElementById('last_name').value;;
       var email = document.getElementById('register_email').value;
       var password = document.getElementById('register_password').value;
-      var passwordConfirm = document.getElementById('password_confirmation');
+      var passwordConfirm = document.getElementById('password_confirmation').value;
       if (email.indexOf('&') !==-1 || email.indexOf('?') !==-1 || email.indexOf('$') !==-1 || email.indexOf('^') !==-1 || email.indexOf('*') !==-1){
         alert('Enter a valid email address');
           return;
@@ -44,26 +46,34 @@
         alert('Password is too weak.');
           return;
       }
-      if(password !== passwordConfirm){
+      if(password != passwordConfirm){
       	alert('Password mismatched!');
       	return;
       }
-      UserDescription();
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
-      firebase.database().ref('/users/' + result.uid).set({
-           fields: str,    
-           firstname: firstName,
-           lastname: lastName, 
-           description: text   
-        });      
+		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+		  // Handle Errors here.
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  console.log(errorCode + errorMessage);
+		});
+
+    //  //UserDescription();
+    //   firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+    //   firebase.database().ref('/users/' + result.uid).set({ 
+    //        firstname: firstName,
+    //        lastname: lastName, 
+    //        email: email  
+    //  	 });      
       
-        alert('You successfully created your account!');
-      SendEmailVerification();
-      window.open("./courses.html", "_self")
-      document.getElementById('register-card').style.display = "none"; 
-      document.getElementById('profile-card').style.display = "none";       
-        });
-      }
+		  // alert('You successfully created your account!');
+		  // SendEmailVerification();
+		  // window.open("./courses.html", "_self")
+		  // document.getElementById('register-card').style.display = "none"; 
+		  // document.getElementById('profile-card').style.display = "none";       
+    //     });
+      alert('Complete Authentication');
+      location.replace("../courses.html");
+     }
 
 
 
@@ -572,26 +582,26 @@
         
 
     function initApp() {
-      document.getElementById('login-button').addEventListener('click', GetSignIn, false);
-      document.getElementById('sign-in-button').addEventListener('click', Signin, false);
-      document.getElementById('register-button').addEventListener('click', Signup, false);
-      document.getElementById('add-class-button').addEventListener('click', addclass, false);
-      document.getElementById('back-button2').addEventListener('click', Back2, false);
-      document.getElementById('sign-up-button').addEventListener('click', signout, false);
-      document.getElementById('submit-button').addEventListener('click', confirm, false);
-      document.getElementById('back1-button').addEventListener('click', Back1, false);  
-      document.getElementById('back-button').addEventListener('click', Back, false);
-      document.getElementById('confirm-button').addEventListener('click', GetSignUp, false);  
-      document.getElementById('add-button3').addEventListener('click', AddNewClass, false);
-      document.getElementById('view-button').addEventListener('click', ViewSchedule, false);
-      document.getElementById('search-button').addEventListener('click', ViewAllClass, false);
-      document.getElementById('delete-button').addEventListener('click', DeleteAccount, false);     
-      document.getElementById('search').addEventListener('click', ViewProfile, false);     
-      document.getElementById('exit-profile').addEventListener('click', exitprofile, false);     
-      document.getElementById('exit-myschedule').addEventListener('click', exitmyschedule, false);     
-      document.getElementById('exit-allschedule').addEventListener('click', exitallschedule, false);     
-      document.getElementById('exit-searchschedule').addEventListener('click', exitsearchschedule, false);     
-      document.getElementById('add-button4').addEventListener('click', done, false);     
+       document.getElementById('login-button').addEventListener('click', GetSignIn, false);
+      // document.getElementById('sign-in-button').addEventListener('click', Signin, false);
+      // document.getElementById('register-button').addEventListener('click', Signup, false);
+      // document.getElementById('add-class-button').addEventListener('click', addclass, false);
+      // document.getElementById('back-button2').addEventListener('click', Back2, false);
+      // document.getElementById('sign-up-button').addEventListener('click', signout, false);
+      // document.getElementById('submit-button').addEventListener('click', confirm, false);
+      // document.getElementById('back1-button').addEventListener('click', Back1, false);  
+      // document.getElementById('back-button').addEventListener('click', Back, false);
+       document.getElementById('confirm-button').addEventListener('click', GetSignUp, false);  
+      // document.getElementById('add-button3').addEventListener('click', AddNewClass, false);
+      // document.getElementById('view-button').addEventListener('click', ViewSchedule, false);
+      // document.getElementById('search-button').addEventListener('click', ViewAllClass, false);
+      // document.getElementById('delete-button').addEventListener('click', DeleteAccount, false);     
+      // document.getElementById('search').addEventListener('click', ViewProfile, false);     
+      // document.getElementById('exit-profile').addEventListener('click', exitprofile, false);     
+      // document.getElementById('exit-myschedule').addEventListener('click', exitmyschedule, false);     
+      // document.getElementById('exit-allschedule').addEventListener('click', exitallschedule, false);     
+      // document.getElementById('exit-searchschedule').addEventListener('click', exitsearchschedule, false);     
+      // document.getElementById('add-button4').addEventListener('click', done, false);     
         }
       window.onload = function() {
       initApp();

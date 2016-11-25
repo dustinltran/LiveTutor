@@ -1,13 +1,220 @@
+document.addEventListener('DOMContentLoaded', function() {
 
-console.log(firebase.app().name); 
-var database = firebase.database();
-  // <---------- USER SIGN IN ------->>  //
+  // FIREBASE CONFIG
+  var config = {
+    apiKey: "AIzaSyAw7K-ok0pec6dYkqropUCYlOhQBfF4VWo",
+    authDomain: "myproject-80d6f.firebaseapp.com",
+    databaseURL: "https://myproject-80d6f.firebaseio.com",
+    storageBucket: "myproject-80d6f.appspot.com",
+    messagingSenderId: "334115835207"
+  };
+  firebase.initializeApp(config);
+
+
+  var db = firebase.database();
+  var auth = firebase.auth();
+  var str = ''; 
+  var value = '';
+  var value1 = '';
+  var name;
+  var email = null;
+  var displayName = null;
+  var uid = null;    
+  var accountbutton = document.getElementById('account-menu-button'); 
+      
+  //FIREBASE AUTH STATE CHANGE METHOD
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      email = user.email ? user.email : null;
+      uid = user.uid ? user.uid : null;
+      
+      
+    } else {
+      
+      //NULLIFY SHARED USER VARIABLES
+      email = null;
+     uid = null;
+     }
+     // LoadUsername();  // this will show up in another html file
+ });
+
+      //document.getElementById('sign-in-button').style.display= "inline";
+     document.getElementById('login-button').addEventListener("click", function(){GetSignIn();});
+//     document.getElementById('sign-in-button').addEventListener("click", function(){
+//         Signin();
+
+//       });
+//     document.getElementById('register-button').addEventListener("click", function(){
+//         Signup(); 
+//       });
+
+//     document.getElementById('add-class-button').addEventListener("click", function(){
+//         addclass();
+//       });
+
+//     document.getElementById('back-button2').addEventListener("click", function(){
+//         Back2();
+//       });
+
+//     document.getElementById('sign-up-button').addEventListener("click", function(){
+//         signout();
+//        // window.location="tri_part.html";
+//       });
+      
+//     document.getElementById('submit-button').addEventListener("click", function(){
+//         confirm();
+//       });
+
+//     document.getElementById('back1-button').addEventListener("click", function(){
+//         Back1();
+//       });  
+      
+//     document.getElementById('back-button').addEventListener("click", function(){
+//         Back();
+//       });
+      
+    document.getElementById('confirm-button').addEventListener("click", function(){
+        GetSignUp();
+      });  
+      
+//     document.getElementById('add-button3').addEventListener("click", function(){
+//         AddNewClass();
+//       });
+
+
+// /// testing here 
+//     document.getElementById('view-button').addEventListener("click", function(){
+      
+
+// //ViewSchedule();
+// //});
+// document.getElementById('sign-in-button').style.display= "none";
+
+//       window.location = "table.html";
+//     });
+//     //document.getElementById('main-card').style.display = "inline";
+    
+//     document.getElementById('search-button').addEventListener("click", function(){
+//         ViewAllClass();
+//       });
+      
+//     document.getElementById('delete-button').addEventListener("click", function(){
+//         DeleteAccount();
+//       });     
+    
+//     document.getElementById('search').addEventListener("click", function(){
+//         ViewProfile();
+//       });     
+//     document.getElementById('exit-profile').addEventListener("click", function(){
+//         exitprofile();
+//       });     
+// 	document.getElementById('exit-profile-check').addEventListener("click", function(){
+//         Profile();
+//         document.getElementById('login-card').style.display = "inline";   
+//       });     
+//     document.getElementById('exit-myschedule').addEventListener("click", function(){
+//         exitmyschedule();
+//       });
+//     document.getElementById('exit-allschedule').addEventListener("click", function(){
+//         exitallschedule();
+//       });     
+//     document.getElementById('exit-searchschedule').addEventListener("click", function(){
+//         exitsearchschedule();
+//       });     
+//     document.getElementById('add-button4').addEventListener("click", function(){
+//         done();
+//       });     
+    
+
+
+
+
+
+    function Signin() {
+      document.getElementById('login-card').style.display = "inline";   
+      document.getElementById('register-card').style.display = "none";    
+      document.getElementById('logout-card').style.display = "none";  
+        }  
+    
+    
+    function exitprofile() {
+      document.getElementById('profile-page').style.display= "none";
+        }
+
+
+    function Signup() {
+      document.getElementById('login-card').style.display = "none";    
+      document.getElementById('register-card').style.display = "inline";    
+        }
+    
+        
+    function Back() {
+      document.getElementById('login-card').style.display = "inline";    
+      document.getElementById('register-card').style.display = "none";    
+        }
+
+
+    function Back1() {
+      document.getElementById('profile-card').style.display = "none";    
+      document.getElementById('register-card').style.display = "inline";    
+        }
+
+
+    function Back2() {
+      document.getElementById('login-card').style.display = "none";    
+      document.getElementById('main-card').style.display = "inline";  
+      document.getElementById('add-class-card').style.display = "none";    
+        }    
+        
+
+    function Signout() {
+      document.getElementById('login-card').style.display = "none";    
+      document.getElementById('register-card').style.display = "none";
+      document.getElementById('logout-card').style.display = "inline";   
+        }
+
+
+    function confirm() {
+      document.getElementById('login-card').style.display = "none";    
+      document.getElementById('register-card').style.display = "none";
+      document.getElementById('profile-card').style.display = "inline";   
+        } 
+        
+        
+    function addclass(){   
+      document.getElementById('main-card').style.display = "none";    
+      document.getElementById('add-class-card').style.display = "inline";      
+        }    
+
+
+function redirect(path){
+    var baseURL = window.location.protocol + '//' + window.location.host;
+    var hasSlash = path.charAt(0) == '/';
+    
+    if(path == '/') {
+      path = baseURL;
+    }
+    
+    if(!hasSlash){
+      path = '/' + path;
+    }
+    
+    var onThisPage = (window.location.href.indexOf(baseURL + path) > -1);
+    
+    if (!onThisPage) {
+      //redirect them to login page for message
+       location = path;
+    }
+  }
+
+
+  // <<---------- USER SIGN IN ------->>  //
 
 
 
     function GetSignIn() {
-      var email = document.getElementById('login-email').value;
-      var password = document.getElementById('login-password').value;        
+      var email = document.getElementById('username-input').value;
+      var password = document.getElementById('password-input').value;        
       if (email.length < 4) {
         alert('Please enter an email address.');
           return;
@@ -23,21 +230,22 @@ var database = firebase.database();
         document.getElementById('username-input').value ='';
         document.getElementById('password-input').value ='';        
          });
+       document.getElementById('sign-in-button').style.display= "none";
+     
         }
 
 
 
-  // <---------- NEW USER SIGN UP ------->>  // 
+  // <<---------- NEW USER SIGN UP ------->>  // 
 
 
 
     function GetSignUp() {
-
       var firstName = document.getElementById('first_name').value;
       var lastName = document.getElementById('last_name').value;;
       var email = document.getElementById('register_email').value;
       var password = document.getElementById('register_password').value;
-      var passwordConfirm = document.getElementById('password_confirmation').value;
+      var passwordConfirm = document.getElementById('password_confirmation').value;  
       if (email.indexOf('&') !==-1 || email.indexOf('?') !==-1 || email.indexOf('$') !==-1 || email.indexOf('^') !==-1 || email.indexOf('*') !==-1){
         alert('Enter a valid email address');
           return;
@@ -46,37 +254,41 @@ var database = firebase.database();
         alert('Password is too weak.');
           return;
       }
-      if(password != passwordConfirm){
+      if(password !== passwordConfirm){
       	alert('Password mismatched!');
       	return;
       }
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-		  // Handle Errors here.
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  console.log(errorCode + errorMessage);
+      console.log('here');
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
+	    var user = firebase.auth().currentUser;
+	    logUser(user); // Optional
+		}, function(error) {
+		    // Handle Errors here.
+		    var errorCode = error.code;
+		    var errorMessage = error.message;
 		});
 
-    //  //UserDescription();
-    //   firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
-    //   firebase.database().ref('/users/' + result.uid).set({ 
-    //        firstname: firstName,
-    //        lastname: lastName, 
-    //        email: email  
-    //  	 });      
+
+
+      //UserDescription();
+      // firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+      // firebase.database().ref('/users/' + result.uid).set({    
+      //      fullname: firstName, 
+      //      description: lastName 
+      //   });      
       
-		  // alert('You successfully created your account!');
-		  // SendEmailVerification();
-		  // window.open("./courses.html", "_self")
-		  // document.getElementById('register-card').style.display = "none"; 
-		  // document.getElementById('profile-card').style.display = "none";       
-    //     });
-      alert('Complete Authentication');
-     }
+      alert('You successfully created your account!');
+      SendEmailVerification();
+
+      window.open("./courses.html", "_self");
+      document.getElementById('register-card').style.display = "none"; 
+      document.getElementById('profile-card').style.display = "none";       
+        });
+      }
 
 
 
-  // <---------- SEND EMAIL TO VERIFY NEW ACCOUNT ------->>  //
+  // <<---------- SEND EMAIL TO VERIFY NEW ACCOUNT ------->>  //
 
 
 
@@ -89,15 +301,15 @@ var database = firebase.database();
 
 
 
-  // <---------- LOAD USERNAME TO NAVIGATION ------->>  //
+  // <<---------- LOAD USERNAME TO NAVIGATION ------->>  //
 
 
 
     function LoadUsername(){
       var user = firebase.auth().currentUser;
-      document.getElementById('account-menu-button').style.display= "inline";
-      document.getElementById('sign-in-button').style.display= "none";
-      var accountbutton = document.getElementById('account-menu-button'); 
+     // document.getElementById('account-menu-button').style.display= "inline";
+      //document.getElementById('sign-in-button').style.display= "none";
+      //var accountbutton = document.getElementById('account-menu-button'); 
       var userId = firebase.auth().currentUser.uid;
           return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
       var username = snapshot.val().fullname;
@@ -107,7 +319,7 @@ var database = firebase.database();
 
 
 
-  // <---------- VIEW CURRENT USER (TUTOR) SCHEDULE ------->>  //
+  // <<---------- VIEW CURRENT USER (TUTOR) SCHEDULE ------->>  //
 
 
 
@@ -134,7 +346,7 @@ var database = firebase.database();
               
        
 
-  // <---------- SEARCH OPTIONS IN GENERAL ------->>  // 
+  // <<---------- SEARCH OPTIONS IN GENERAL ------->>  // 
 
 
 
@@ -179,7 +391,39 @@ var database = firebase.database();
 
 
 
-  // <---------- VIEW ALL USER (TUTOR) SCHEDULE BASED ON THE SUBJECT ------->>  //
+
+
+// <<---------- TESTING ------->>  // 
+
+
+
+    function Profile(){
+       var userId = firebase.auth().currentUser.uid;
+     
+      var searchresult = document.getElementById('tfq').value;
+      var playersRef = firebase.database().ref('users/');
+          playersRef.orderByChild("fullname").on("child_added", function(data) {
+      var fullname = data.val().fullname;     
+      var Tutorer = data.val().fields;
+      var description = data.val().description;
+      document.getElementById('title').innerHTML = fullname;
+      document.getElementById('sub').innerHTML = Tutorer;
+      document.getElementById('other').innerHTML = description;
+      document.getElementById('profile-page').style.display = "inline";
+        alert(userId);
+        });
+   
+      }
+
+
+
+
+
+
+
+
+
+  // <<---------- VIEW ALL USER (TUTOR) SCHEDULE BASED ON THE SUBJECT ------->>  //
        
 
 
@@ -206,7 +450,7 @@ var database = firebase.database();
 
 
 
-  // <---------- SECLECT SUBJECT IN VIEW ALL CLASS ------->>  // 
+  // <<---------- SECLECT SUBJECT IN VIEW ALL CLASS ------->>  // 
 
 
 
@@ -217,7 +461,7 @@ var database = firebase.database();
 
 
 
-  // <---------- SECLECT SUBJECT IN ADD NEW CLASS ------->>  //
+  // <<---------- SECLECT SUBJECT IN ADD NEW CLASS ------->>  //
 
 
 
@@ -227,7 +471,8 @@ var database = firebase.database();
       }
 
 
-  // <---------- COMPLETE ADDING NEW COURSE ------->>  //
+
+  // <<---------- COMPLETE ADDING NEW COURSE ------->>  //
 
 
 
@@ -278,23 +523,27 @@ var database = firebase.database();
 
 
 
-  // <---------- SIGN OUT ------->>  // 
+  // <<---------- SIGN OUT ------->>  // 
 
 
 
     function signout (){
       firebase.auth().signOut().then(function() {
-      }, function(error) {
-      Alert('Sign out Failed');
-      });       
-      document.getElementById('account-menu-button').style.display= "none";
+    document.getElementById('account-menu-button').style.display= "none";
       document.getElementById('sign-in-button').style.display= "inline";
       document.getElementById('main-card').style.display= "none";
-    }
+         
+//redirect('tri_part.html');
+
+      }, function(error) {
+      Alert('Sign out Failed');
+      });
+
+      }
    
 
 
-  // <---------- ADD NEW CLASS ------->>  //
+  // <<---------- ADD NEW CLASS ------->>  //
 
 
       
@@ -322,7 +571,7 @@ var database = firebase.database();
 
 
 
-  // <---------- USER DESCRIPTION ------->>  //
+  // <<---------- USER DESCRIPTION ------->>  //
 
 
 
@@ -337,7 +586,7 @@ var database = firebase.database();
        
     
 
-  // <---------- TABLE OF TUTOR SCHEDULE ------->>  //
+  // <<---------- TABLE OF TUTOR SCHEDULE ------->>  //
 
 
 
@@ -345,7 +594,7 @@ var database = firebase.database();
       var table = document.getElementById("myTableData1");
       var rowCount = table.rows.length;
       var row = table.insertRow(rowCount);
-          row.insertCell(0).innerHTML= '<input type="button" style = "background-color:#90ee90; color: red" value = "Delete" onClick="Javacsript:deleteRow(this)">'; 
+          row.insertCell(0).innerHTML= '<input type="button" style = "background-color:#90ee90; color: red" value = "Delete" onClick="Javascript:deleteRow(this)">'; 
           row.insertCell(1).innerHTML= cell1;
           row.insertCell(2).innerHTML= cell2;
           row.insertCell(3).innerHTML= cell3;
@@ -354,8 +603,7 @@ var database = firebase.database();
 
     
 
-
-  // <---------- TABLE OF ALL COURSES USING SEARCH SUBJECT ------->>  //
+  // <<---------- TABLE OF ALL COURSES USING SEARCH SUBJECT ------->>  //
 
 
 
@@ -368,12 +616,15 @@ var database = firebase.database();
           row.insertCell(2).innerHTML= cell3;
           row.insertCell(3).innerHTML= cell4;
           row.insertCell(4).innerHTML= cell5;
-          row.insertCell(5).innerHTML= '<input type="button" style="background-color:#90ee90" value = "JOIN" onClick="Javacsript:JointClass(this)">'; 
+           row.insertCell(5).innerHTML= '<input type="button" style="background-color:#90ee90" value = "JOIN" onClick="JointClass(this)">';
+          
+
+          
         }
 
     
 
-  // <---------- TABLE OF ALL COURSES USING SEARCH WITOUT MEMBER ------->>  //
+  // <<---------- TABLE OF ALL COURSES USING SEARCH WITOUT MEMBER ------->>  //
 
 
 
@@ -390,7 +641,7 @@ var database = firebase.database();
 
 
 
-  // <---------- DELETE USER ACCOUNT ------->>  //
+  // <<---------- DELETE USER ACCOUNT ------->>  //
 
 
 
@@ -411,7 +662,7 @@ var database = firebase.database();
 
 
 
-  // <---------- DELETE COURSE ------->>  //
+  // <<---------- DELETE COURSE ------->>  //
 
 
 
@@ -446,7 +697,7 @@ var database = firebase.database();
      
 
 
-  // <---------- DELETE HELPER ------->>  //
+  // <<---------- DELETE HELPER ------->>  //
 
 
 
@@ -461,18 +712,18 @@ var database = firebase.database();
 
 
 
-  // <---------- JOINT THE COURSE ------->>  //
+  // <<---------- JOINT THE COURSE ------->>  //
 
 
 
-    function JointClass(obj) {      
+    function JointClass(abj) {      
       var index = obj.parentNode.parentNode.rowIndex;
         alert("Shane' s part here"); 
         }
 
 
 
-  // <---------- EXIT TUTOR TABLE SCHEDULE ------->>  //
+  // <<---------- EXIT TUTOR TABLE SCHEDULE ------->>  //
 
 
 
@@ -488,7 +739,7 @@ var database = firebase.database();
 
 
 
-  // <---------- EXIT ALL COURSE TABLE ------->>  //
+  // <<---------- EXIT ALL COURSE TABLE ------->>  //
 
 
 
@@ -504,7 +755,7 @@ var database = firebase.database();
 
 
 
-  // <---------- EXIT SEARCH COURSE TABLE ------->>  //
+  // <<---------- EXIT SEARCH COURSE TABLE ------->>  //
 
 
 
@@ -516,92 +767,19 @@ var database = firebase.database();
             table.deleteRow(i);
           }
         }
+
+     //Helper Functions
+    function logUser(user) {
+	    var ref = firebase.database().ref("users");
+	    var obj = {
+	        "user": user
+	    };
+	    ref.push(obj); // or however you wish to update the node
+	}
     
 
-
-  // <---------- HELPER FUNCTIONS ------->>  //
-
+}, false);
 
 
-    function Signin() {
-      document.getElementById('login-card').style.display = "inline";   
-      document.getElementById('register-card').style.display = "none";    
-      document.getElementById('logout-card').style.display = "none";  
-        }  
-    
-    
-    function exitprofile(){
-      document.getElementById('profile-page').style.display= "none";
-        }
 
-
-    function Signup() {
-      document.getElementById('login-card').style.display = "none";    
-      document.getElementById('register-card').style.display = "inline";    
-        }
-    
-        
-    function Back() {
-      document.getElementById('login-card').style.display = "inline";    
-      document.getElementById('register-card').style.display = "none";    
-        }
-
-
-    function Back1() {
-      document.getElementById('profile-card').style.display = "none";    
-      document.getElementById('register-card').style.display = "inline";    
-        }
-
-
-    function Back2() {
-      document.getElementById('login-card').style.display = "none";    
-      document.getElementById('main-card').style.display = "inline";  
-      document.getElementById('add-class-card').style.display = "none";    
-        }    
-        
-
-    function Signout() {
-      document.getElementById('login-card').style.display = "none";    
-      document.getElementById('register-card').style.display = "none";
-      document.getElementById('logout-card').style.display = "inline";   
-        }
-
-
-    function confirm() {
-      document.getElementById('login-card').style.display = "none";    
-      document.getElementById('register-card').style.display = "none";
-      document.getElementById('profile-card').style.display = "inline";   
-        } 
-        
-        
-    function addclass(){   
-      document.getElementById('main-card').style.display = "none";    
-      document.getElementById('add-class-card').style.display = "inline";      
-        }    
-        
-
-    function initApp() {
-       document.getElementById('login-button').addEventListener('click', GetSignIn, false);
-      // document.getElementById('sign-in-button').addEventListener('click', Signin, false);
-      // document.getElementById('register-button').addEventListener('click', Signup, false);
-      // document.getElementById('add-class-button').addEventListener('click', addclass, false);
-      // document.getElementById('back-button2').addEventListener('click', Back2, false);
-      // document.getElementById('sign-up-button').addEventListener('click', signout, false);
-      // document.getElementById('submit-button').addEventListener('click', confirm, false);
-      // document.getElementById('back1-button').addEventListener('click', Back1, false);  
-      // document.getElementById('back-button').addEventListener('click', Back, false);
-       document.getElementById('confirm-button').addEventListener('click', GetSignUp, false);  
-      // document.getElementById('add-button3').addEventListener('click', AddNewClass, false);
-      // document.getElementById('view-button').addEventListener('click', ViewSchedule, false);
-      // document.getElementById('search-button').addEventListener('click', ViewAllClass, false);
-      // document.getElementById('delete-button').addEventListener('click', DeleteAccount, false);     
-      // document.getElementById('search').addEventListener('click', ViewProfile, false);     
-      // document.getElementById('exit-profile').addEventListener('click', exitprofile, false);     
-      // document.getElementById('exit-myschedule').addEventListener('click', exitmyschedule, false);     
-      // document.getElementById('exit-allschedule').addEventListener('click', exitallschedule, false);     
-      // document.getElementById('exit-searchschedule').addEventListener('click', exitsearchschedule, false);     
-      // document.getElementById('add-button4').addEventListener('click', done, false);     
-        }
-      window.onload = function() {
-      initApp();
-        };
+  

@@ -2,14 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // FIREBASE CONFIG
   var config = {
-    apiKey: "AIzaSyAw7K-ok0pec6dYkqropUCYlOhQBfF4VWo",
-    authDomain: "myproject-80d6f.firebaseapp.com",
-    databaseURL: "https://myproject-80d6f.firebaseio.com",
-    storageBucket: "myproject-80d6f.appspot.com",
-    messagingSenderId: "334115835207"
+    apiKey: "AIzaSyA4_BZH7e7JnFx5ACuY0jTHEeB0i9rqMHw",
+    authDomain: "livetutor-acbbe.firebaseapp.com",
+    databaseURL: "https://livetutor-acbbe.firebaseio.com",
+    storageBucket: "livetutor-acbbe.appspot.com",
+    messagingSenderId: "834892008524"
   };
   firebase.initializeApp(config);
-
+console.log(firebase.app().name); 
 
   var db = firebase.database();
   var auth = firebase.auth();
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var displayName = null;
   var uid = null;    
   var accountbutton = document.getElementById('account-menu-button'); 
+  var provider = new firebase.auth.GoogleAuthProvider();
       
   //FIREBASE AUTH STATE CHANGE METHOD
   auth.onAuthStateChanged(function(user) {
@@ -241,6 +242,7 @@ function redirect(path){
 
 
     function GetSignUp() {
+
       var firstName = document.getElementById('first_name').value;
       var lastName = document.getElementById('last_name').value;;
       var email = document.getElementById('register_email').value;
@@ -258,16 +260,22 @@ function redirect(path){
       	alert('Password mismatched!');
       	return;
       }
-      console.log('here');
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
+      //firebase.auth().createUserWithEmailAndPassword(email, password);
+      //.then(function(user) {
 	    var user = firebase.auth().currentUser;
-	    logUser(user); // Optional
-		}, function(error) {
-		    // Handle Errors here.
-		    var errorCode = error.code;
-		    var errorMessage = error.message;
-		});
+	    firebase.database().ref('/users/' + result.uid).set({    
+	         fullname: firstName, 
+	         description: lastName 
+	        }); 
 
+   	alert('You successfully created your account!');
+		// }, function(error) {
+		//     // Handle Errors here.
+		//     var errorCode = error.code;
+		//     var errorMessage = error.message;
+		//     console.log(errorCode + " " + errorMessage);
+		//     return;
+		// });
 
 
       //UserDescription();
@@ -277,14 +285,13 @@ function redirect(path){
       //      description: lastName 
       //   });      
       
-      alert('You successfully created your account!');
-      SendEmailVerification();
+      // SendEmailVerification();
 
-      window.open("./courses.html", "_self");
-      document.getElementById('register-card').style.display = "none"; 
-      document.getElementById('profile-card').style.display = "none";       
-        });
-      }
+      // window.open("./courses.html", "_self");
+      // document.getElementById('register-card').style.display = "none"; 
+      // document.getElementById('profile-card').style.display = "none";       
+      //   });
+  }
 
 
 
@@ -767,15 +774,6 @@ function redirect(path){
             table.deleteRow(i);
           }
         }
-
-     //Helper Functions
-    function logUser(user) {
-	    var ref = firebase.database().ref("users");
-	    var obj = {
-	        "user": user
-	    };
-	    ref.push(obj); // or however you wish to update the node
-	}
     
 
 }, false);

@@ -1,92 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+  <head>
+    <meta charset=utf-8 />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile viewing enhancement -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <!-- Description should be roughly 155 characters, no double quotes, use keywords -->
+    <meta name="description" content="Livetutor and Firebase" />
+    <!-- Format as Primary Keyword - Secondary Keyword | Brand Name, keep under 55 characters -->
+    <title>Livetutor SJSU</title>
+    <!-- Minimize the number of CSS files for performance -->
+    <!-- <link rel="shortcut icon" href="Picture1.png"> -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100,300,700italic,500,500italic,400italic,300italic,100italic|Roboto+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-amber.min.css" />
 
-	<head>
-		<meta charset=utf-8></meta>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-		<!-- Mobile viewing enhancement -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"></meta>
-		<!-- Description should be roughly 155 characters, no double quotes, use keywords -->
-		<meta name="description" content="Livetutor and Firebase" /></meta>
-	<!-- Format as Primary Keyword - Secondary Keyword | Brand Name, keep under 55 characters -->
-	<title>Livetutor SJSU</title>
-	<!-- Minimize the number of CSS files for performance -->
-	<!-- <link rel="shortcut icon" href="Picture1.png"> -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100,300,700italic,500,500italic,400italic,300italic,100italic|Roboto+Condensed:300' rel='stylesheet' type='text/css'></link>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-amber.min.css"></link>
+    <!-- Link the CSS files-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>  
 
-	<!-- Link the CSS files-->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css"></link>
-	<!-- <link rel="stylesheet" href="css/custom.css"> -->
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="css/bootstrap-theme.min.css"></link>
-
-	<!-- LiveTutor CSS -->
-	<link href="css/Style.css" rel="stylesheet" type="text/css"></link>
-
+    <!-- LiveTutor CSS -->
+    <link href="css/Style.css" rel="stylesheet" type="text/css" />
+	
 	<style>
-		.list-schedule{
-			list-style-type:none; 
-			margin: 0; 
-			padding: 0; 
-			overflow: hidden;
-		}
+      #inner-body {
+		padding-top:60px;
+		text-align:left;
+		background:#333333;
+      }
+	  
+	  #inner-body-info {
+		text-align:left;
+		background:#333333;
+      }
+	  
+	  #board-info-box{
+		margin-left:16%;
+		text-align:left;
+		background:white;
+		height:700px;
+		overflow:scroll;
+		overflow-x: hidden;
+	  }
+	  
+	  #board-info-box2{
+		text-align:left;
+		background:white;
+		height:700px;
+	  }
+	  
+	  #board-container{
+		background:white;
+		margin-left:16%;
+	  }
+	  
+	  #viewer-count{
+		float:left;
+		padding-top:10px;
+		font-size: 20px;
+	  }
+	  
+	  #myCanvas{
+		margin-left:16%;
+		margin-bottom:50px;
+		background: #000000;
+		border-bottom: 4px solid grey;
+		cursor:crosshair;
+	  }
+	  
+	  #canvas-head{
+		margin-left:14%;
+	  }
+	  
+	  #chatdiv {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		padding-top:60px
+		margin: 20px auto;
+		background: white;
+		float:right;
+		position:fixed;
+		height:100%;
+		top:0px;
+		right:0px;
+		bottom:0px;
 
-		.testbox{
-			background-color: azure;
-			margin: 10px; 
-			padding: 10px; 
-			border:2px solid #000000;
-		}
+	  }
+	  
+	  #chat{
+		padding-top:70px;
+		height: 85%;
+		overflow:scroll;
+		overflow-x: hidden;
+	  }
+	  
+	  #userList{
+		list-style-type:none;
+		height:80%;
+		margin-top:30px;
+		padding-left:20px;
+		overflow:scroll;
+		overflow-x: hidden;
+		border-left: 1px solid grey;
+		text-align:left;
+		font-size:16px;
+	  }
+	  
+	  #toolbar {
+		border: 4px solid #444444;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		padding-top:60px
+		margin: 20px auto;
+		background: #555555;
+		top:60px;
+		float:left;
+		position:fixed;
+		height:100%;
+		opacity: 1;
 		
-		#profile-inner-body-info{
-			background:grey;
-			margin-top:0px;
-		}
-		
-		#profile-board-info-box{
-			height:400px;
-			background:white;
-			margin-top:70px;
-			margin-bottom:10px;
-		}
-		
-		#profile-messages-body{
-			background:white;
-			margin-top:0px;
-		}
-		
-		
-		#profile-rooms-box{
-			height:400px;
-			background:white;
-			margin-top:70px;
-			margin-bottom:10px;
-			overflow:scroll;
-			overflow-x: hidden;
-			border-left: 1px solid grey;
-		}
-		
-		#profile-searchlist{
-			list-style-type:none;
-		}
-		
-		#message-box{
-			height:100px
-			border-bottom: 1px solid grey;
-			
-		}
-		
-		#messageinput{
-			margin-top:10px;
-		}
-		
-		
-	</style>
+	  }
+	  
+    </style>
 
-</head>
+  </head>
 <body>
 	<div class="container-fluid">
 		<!--Start of NavBar-->
@@ -160,51 +199,51 @@
 										<a href="#logoutModal" onclick="Logout();return false;" class="dropdown-toggle"> Logout </a>
 									</li>
 									<!-- End of Logout -->
+
 								</ul>
 							</div> <!-- Collapsed Menu -->
 						</div> <!--End of container-fluid-->
 					</nav> <!-- End of NavBar-->
-				</div>    
+      </div>    
 
-				      <!-- PROFILE -->
-
-     <!-- Under Whiteboard Studd-->
+	<!--Whitebgoard 2.0-->
 	<div class="row">
-		<div id="profile-inner-body-info" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-			<div id="profile-board-info-box" class="col-xs-6 col-sm-6 col-md-6">
+
+		<div id="inner-body" class="col-xs-9 col-sm-9 col-md-9">
+			
+			<div id="canvas-head" class="col-xs-10 col-sm-10 col-md-10">
+			<font color="white">
+				
+				<button id="onlinebutton" type="button" style="width:80px; float:right; margin-top:16px" class="btn btn-danger disabled">LIVE</button>
+				<h4 id="subjecttag">Math 123</h4>
+				<a href="#" ><h5 id="tutortag" >Tutor: Shane Elliott</h5></a> 
+
+				</font>
+			</div>
+			<canvas id="myCanvas" width="900" height="600"></canvas>
+		</div>
+	</div>
+	
+	<!-- Under Whiteboard Stuff-->
+	<div class="row">
+		<div id="inner-body-info" class="col-xs-9 col-sm-9 col-md-9">
+			<div id="board-info-box" class="col-xs-6 col-sm-6 col-md-6">
 				<font color="grey">
 					<div class="row">
-						<div style="border-bottom:2px solid grey;" class="col-xs-12 col-sm-12 col-md-12">
-						</div>
+					<div style="border-bottom:2px solid grey;" class="col-xs-12 col-sm-12 col-md-12">
+						<button type="submit" id="disconnectbutton" class="btn btn-danger" value="Disconnect" style="margin-top:10px; margin-bottom:10px; float:right; height:30px">Disconnect</button>
+						<span id="viewer-count" class="glyphicon glyphicon-eye-open"> </span>
+						<h4 id="viewcount"> 404</h4> 
 						
 					</div>
-					
-					<div id="myprofile">
-						<b>User Profile</b>
-						</div>
-						<div id="myprofile1">
-							<i class="material-icons" style = " font-size: 400%">account_circle</i> <span <h1 id = "title" style = "font-size: 300%"></h1>></span>
-            
-							<p><b>Name:</b></p>
-							<p id = "nametag"></p>
-
+						
 					</div>
 					
 					<div class="col-xs-12 col-sm-12 col-md-12">
-						<h4> About Me:</h4> 
-						<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
-						
-						<div class="mdl-card__actions mdl-card--border intro-card-actions">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="exit-profile">
-                                Edit
-                              </a>
-							
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="exit-profile">
-                                Save
-                              </a>
-							  
-							 
-                        </div>
+						<h4> Class Description:</h4> 
+						<h4 id="desc"> nchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ip</h4> 
+						<h4> Tutor About Me:</h4> 
+						<h4 id="aboutme"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ip</h4> 
 					
 					</div>
 					
@@ -212,31 +251,67 @@
 				
 			</div>
 			
-			<div id="profile-rooms-box" class="col-xs-6 col-sm-6 col-md-6">
-					<div id="classes-div"><h3>Tutor Schedule:</h3></div>
-								
-					<ul id="profile-searchlist">
-					</ul>
-				
+			<div id="board-info-box2" class="col-xs-3 col-sm-3 col-md-3">
+				<h4>User List</h4>
+				<div id="userList"></div>
 			</div>
-		
-		</div>
-	</div>
-	
-	<!-- Message Board-->
-	<div class="row">
-		<div id="profile-messages-body" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-			<div id="message-box" class="col-xs-10 col-sm-10 col-md-10">
-				<input type="text" id="messageinput" class="form-control" placeholder=":) Message..."/>	
-				<button type="button" onclick="sendMessage();" class="btn btn-info">SEND</button>
-			<div>
 			
-			<ul id="messages" class="col-xs-10 col-sm-10 col-md-10">
-				<li></li>
-			</ul>
 		</div>
 	</div>
+	<!-- Toolbar 2.0-->
+	<div id="toolbar" class="col-xs-1 col-sm-1 col-md-1">
+		<font color="white">
+			<h5 style="margin-top:10px">Toolbar:</h5>
+			<h5 style="margin-top:10px">Line Color:</h5>
+		<select id="selectColor" class="form-control">
+			<option value="white">White</option>
+			<option value="black">Black</option>
+			<option value="red">Red</option>
+			<option value="blue">Blue</option>
+			<option value="green">Green</option>
+		</select>
+		
+			<h5 style="margin-top:10px">Line Thickness:</h5>
+		<select id="selectThick" class="form-control" style="margin-top:10px;">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="20">10</option>
+			<option value="40">20</option>
+			<option value="60">30</option>
+			<option value="100">50</option>
+			<option value="200">100</option>
+		</select>
+		
+		<!--Clear button-->
+		<input type="submit" id="clear" class="btn btn-info btn-block" value="Clear" style="margin-top:20px;"/>
+		</font>
+		
+	</div>
+
+			
+	<div id="chatdiv" class="col-xs-3 col-sm-3 col-md-3">
+				<div id="chat" class="col-xs-12 col-sm-12 col-md-12"></div>
+
+				<input type="text" id="chatOut" class="form-control" placeholder="Chat..."/>	
 				
+				<div style="margin-top:10px;">
+					<a style="padding:5px;">
+						<span id="thumb-glyphicon" class="glyphicon glyphicon-thumbs-up"></span>
+					</a>
+					
+					<button type="submit" style="float:right;"  id="chatSend" value="Disconnect"  class="btn btn-info">
+								SEND 
+					</button>
+				
+					
+				</div>
+
+
+	</div> 
+
 	<!-- Modal -->
 	<div id="editClassModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -440,16 +515,20 @@
 
 													</div>
 												</div>
-						
+	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-
-	<!-- Initialize Firebase -->
-	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+	
+		<!-- Initialize Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+	
+	<script src = "js/studyboard.js"></script>
+	<script src = "js/firebaseStudyBoard.js"></script>
+	
 	<script>
-
-
+	      // Initialize Firebase
 	var userId = "";
 	var username = "";
 		
@@ -467,17 +546,29 @@
 				userId = user.uid;
 				username = user.displayName;
 				LoginSetup();
+				
+				//Run StudyboardScripts/////
+				qs();
+				resizeCanvas();
+				window.addEventListener('resize', resizeCanvas, false);
+				////////////////////////////
 			} else {
 			// No user is signed in.
+			
+				//Run StudyboardScripts/////
+				qs();
+				resizeCanvas();
+				window.addEventListener('resize', resizeCanvas, false);
+				////////////////////////////
 			}
 		});
 	</script>
-	<script src = "js/main.js"></script>
-	<script src = "js/profile.js"></script>
+    <script src = "js/main.js"></script>
+	
+	
 
+    
 
-
-	</body>
+ </body>
 
 </html>
-													

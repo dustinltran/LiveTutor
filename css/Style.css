@@ -20,6 +20,34 @@ img {
   height: 45px;
 }
 
+/*Scrollbar */
+		::-webkit-scrollbar {
+		width: 12px;
+		}
+ 
+		/* Track */
+		::-webkit-scrollbar-track {
+		background: rgba(255,255,255,1); 
+		
+		}
+	
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		background: rgba(200,200,200,1); 
+		-webkit-box-shadow: inset 0 0 2px rgba(255,255,255,0.1);
+		
+		}
+		
+		::-webkit-scrollbar-thumb:window-inactive {
+			background: rgba(1,0,0,0);
+		}
+		
+		#thumb-glyphicon {
+			font-size: 30px;
+		}
+
 .navbar-search {
   padding-top: 5px;
 }
@@ -105,7 +133,7 @@ img {
 }
 
 .login-card > .mdl-card__title {
-  background: url('Picture1.png') center / cover;
+  
 
 }
 
@@ -125,42 +153,19 @@ img {
   background: url('../images/lines.png') center / cover;
 }
 
-#account-menu-button {
-  text-transform: capitalize;
-  display:none;
-}
-
 
 #chip:hover {
   cursor: pointer;
 }
 
-#notice-card {
+#profile-page
+{
+		margin-top: 60px;
+}
+
+#register-card {
   display: none;
 }
-
-#profile-card {
-position:fixed;
-    width: 45%;
-    height: 80%;
-    top: 65px;
-    left: 400px;
-    bottom: 0;
-    right: 0;
-    overflow: auto;
-    background: white;
-display: none;
-
-}
-
-#logout-card {
-  display: none;
-}
-#login-card {
-  display: none;
-}
-
-
 #secure-card {
   display: none;
 }
@@ -218,15 +223,3 @@ display: none;
 .clear{
 		clear:both;
 	}
-
-#login-card{
-  display: none;
-}
-
-#register-card{
-  display: none;
-}
-
-#add-class-card{
-  display: none;
-}

@@ -2,7 +2,7 @@
 	
 	//SEARCHING DATABASE -- This function search the database for matches to the users search and creates listitems to display the results/////////
 	function searchdatabase(str){
-		
+
 		console.log("Attempting to search Database...");
 		
 		var searchRooms = firebase.database().ref('StudyRooms');	
@@ -70,7 +70,6 @@
 			}
 		
 		});
-		
 	}
 		
 	var qsParm = new Array();

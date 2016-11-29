@@ -6327,7 +6327,7 @@ button.close {
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
   background-color: rgba(0, 0, 0, 0);
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: .01;
 }
 .carousel-control.left {
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
@@ -6353,7 +6353,7 @@ button.close {
   text-decoration: none;
   filter: alpha(opacity=90);
   outline: 0;
-  opacity: .9;
+  opacity: .25;
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next,

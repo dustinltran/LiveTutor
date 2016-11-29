@@ -14,7 +14,7 @@
 	  var linesize = 5;
 	  var rect = canvas.getBoundingClientRect();
 	  var scale = 1;
-	  var connected = false;
+	  var connected;
 
 	  
 	 //==================================================
@@ -28,12 +28,13 @@
 	}
 
 	function drawNoConnection(){
-		context.fillStyle = "#696969";
+		context.fillStyle = "#222222";
 		context.fillRect(0, 0, 1000 * scale, 1000 * scale);
 		context.fillStyle = "white";
-		if (scale < 1){context.font="20px Georgia";}
-		else{context.font="40px Georgia";}
-		context.fillText("You are not connected",canvas.width / 4,canvas.height / 2);
+		if (scale < .4){context.font="20px Georgia";}
+		else if (scale < 1){context.font="40px Georgia";}
+		else{context.font="80px Georgia";}
+		context.fillText(":( OFFLINE",canvas.width / 4,canvas.height / 2);
 		
 	}
 	
@@ -112,6 +113,11 @@
 		}
 	}
 	
+	//Clicking Send
+	document.getElementById("thumb-glyphicon").onclick = function () {
+		sendMessage('@#thumbsup#@'); //Send thumbsup to clients
+		}
+	
 	//Clicking Clear
 	document.getElementById("clear").onclick = function () {
 		if (permission === "1")
@@ -122,15 +128,6 @@
 	
 	}
 	
-	//Clicking Disconnect
-	document.getElementById("disconnectbutton").onclick = function () {
-		clearAll();
-		drawNoConnection();
-		sendDisconnect("disconnect"); //Send clear function to clients
-		displayChatMessage("You have Disconnected");
-	
-	}
-	
 	//==================================================
 	//Math Functions
 	//==================================================
@@ -138,4 +135,4 @@
 	function distance(x1, y1, x2, y2){ 
 		return Math.abs(Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) ));
 	}
-	
+

@@ -16,6 +16,7 @@
 			searchroomidlist = [];
 			
 			for (var key in rooms) {
+				console.log(rooms[key]);
 				if (rooms[key].Subject.toLowerCase().includes(str.toLowerCase()) || rooms[key].Host.toLowerCase().includes(str.toLowerCase())){
 					searchroomidlist.push(rooms[key].RoomId);
 

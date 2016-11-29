@@ -4,6 +4,7 @@ var messagenumber = "0";
 var userarray = [];
 var permission = "0";
 var host = "";
+var hosttaglink = "";
 
 //Firebase Reference Varibles
 var mRefRoom = "";
@@ -32,6 +33,67 @@ function init(){
 			
 			firebase.database().ref('StudyRooms/' + roomid + "/HostID").once("value", function(response) {
 					host = response.val();
+					
+					//LISTNER FOR IF OFF LINE OR ONLINE!!! IMPORTANT STUFF
+					firebase.database().ref('StudyRooms/' + roomid + "/online").on("value", function(response) {
+						online = response.val();
+						
+						if (connected!=null){
+							window.location.href = "studyboard.html?roomid=" + roomid;
+						}
+						
+						if (!online){
+							connected=false;
+							clearAll();
+							drawNoConnection();
+						
+								var onlinebutton = document.getElementById('onlinebutton');
+								var golive = document.getElementById('golive');
+								
+								if (user != null)
+									{
+										if (host === user.uid)
+										{
+											onlinebutton.setAttribute("class","btn btn-default");
+											golive.innerHTML = "PRESS THIS BUTTON TO GO LIVE >>>>>>>>";
+											onlinebutton.addEventListener("click",goonline);
+											onlinebutton.innerHTML = "GO LIVE!"
+										}
+									}
+								else {
+										onlinebutton.setAttribute("class","btn btn-default disabled");
+										onlinebutton.innerHTML = "OFFLINE"
+									}
+								
+							
+							}
+							
+						else {
+								connected = true;
+								clearAll();
+						
+								var onlinebutton = document.getElementById('onlinebutton');
+								var golive = document.getElementById('golive');
+								
+								if (user != null)
+									{
+										if (host === user.uid)
+										{
+											onlinebutton.setAttribute("class","btn btn-danger");
+											golive.innerHTML = "PRESS THIS BUTTON TO GO OFFLINE >>>>>>>>";
+											onlinebutton.addEventListener("click",gooffline);
+											onlinebutton.innerHTML = "DISCONNECT"
+										}
+									}
+								else {
+										onlinebutton.setAttribute("class","btn btn-danger disabled");
+										onlinebutton.innerHTML = "LIVE"
+									}
+								
+							
+							}
+				});
+					
 					populateList();
 				});
 			
@@ -94,10 +156,6 @@ function init(){
 			
 			}});
 	
-		
-		
-		
-		connected = true;
 		if (username === ""){sendNoTagMessage("Guest has joind the Chat");}
 		else {sendNoTagMessage(username + " has joind the Chat");}
 		
@@ -106,29 +164,15 @@ function init(){
 		//Send Joined Chat Message
 		displayChatMessage("Connected to Chat");
 		createDrawEventListeners();
-		createEventListeners();
+		createEventListeners();		
 		//alert("CONNECTED!");
 		
 		
 	}
-	
 	else {
-		//If studyroom doesnt exsist Create one.
-		//save();
-		
-		mRefRoom.child('numberOfUsers').set("1");
-		mRefRoom.child('/UserList/Host0/username').set("Host: " + toTitleCase(username));
-		mRefRoom.child('/UserList/Host0/permission').set("1");
-		
-		
-		//Set on disconnect Function
-		firebase.database().ref('/StudyRooms/' + roomid + '/UserList/' + username).onDisconnect().remove();
-		
-		displayChatMessage("Connected to Chat");
-		connected = true;
-		clearAll();
-		//alert("CONNECTED!");
-	}});
+		window.location.href = "index.html";
+	}
+	});
 }
 
 //
@@ -231,7 +275,19 @@ function disconnection(){
     // Make the new chat message element
     var msg = document.createElement("div");
     msg.className = "chatMessage diagonalGradient";
-    msg.appendChild(document.createTextNode(message));
+	
+	newchat = message;
+	if (newchat.includes('@#thumbsup#@')){
+			chatreplace = newchat.replace("@#thumbsup#@", "");
+			var icon = document.createElement('div');
+			icon.innerHTML = chatreplace + '<span class="glyphicon glyphicon-thumbs-up"></span>';
+			icon.style.color = "blue";
+			msg.appendChild(icon);
+		}
+		
+	else{
+		msg.appendChild(document.createTextNode(newchat));
+	}
   
     // Append the new message to the chat
     var chatPane = document.getElementById("chat");
@@ -386,21 +442,81 @@ function createEventListeners(){
 				}
 				
 				else if (window.innerWidth > 1100){
-					canvas.width = 540;
-					canvas.height = 390;
+					canvas.width = 675;
+					canvas.height = 450;
 					scale = .75;
 				}
 				
 				else if (window.innerWidth > 600){ //scaled / 2
-					canvas.width = 360;
-					canvas.height = 260;
+					canvas.width = 450;
+					canvas.height = 300;
 					scale = .5;
+				}
+				
+				else if (window.innerWidth > 400){ //scaled / 2
+					canvas.width = 225;
+					canvas.height = 150;
+					scale = .25;
 				}
 				
 				if (!connected){drawNoConnection();}
 				else {loadDraws();}
 	}
 		
+		
+	//==================================================
+	//Load Room Text Fields Functions
+	//==================================================
+	
+	function createEventListenerstextfields(str){
+			
+		firebase.database().ref('StudyRooms/' + str).on('value', function (snapshot){
+			data = snapshot.val();
+			
+			if (data!=null)
+			{
+				var subjecttag = document.getElementById('subjecttag');
+				subjecttag.innerHTML = data.Subject;
+				var tutortag = document.getElementById('tutortag');
+				tutortag.innerHTML = "Tutor: " + toTitleCase(data.Host);
+				hosttaglink = data.HostID;
+				tutortag.addEventListener("click", function (){window.location.href = "profile.html?id=" + hosttaglink;});
+				var viewcount = document.getElementById('viewcount');
+				viewcount.innerHTML = data.numberOfUsers;
+				var desc = document.getElementById('desc');
+				desc.innerHTML = data.Description;
+				
+				firebase.database().ref('users/' + data.HostID).once('value', function (snapshot){
+					var aboutme = document.getElementById('aboutme');
+					aboutme.innerHTML = snapshot.val().AboutMe;;
+					});
+			}
+			
+			});
+		
+			//Checks database for removed users from userlist
+		firebase.database().ref('StudyRooms/').on('child_removed', function (snapshot){
+				data = snapshot.val();
+				if (data.RoomId != null)
+					{
+					if (data.RoomId === roomid){
+						window.location.href = "index.html";
+						}
+					}
+				});
+			
+	}
+	
+	function goonline(){
+		mRefRoom.child('/online').set(true);
+		window.location.href = "studyboard.html?roomid=" + roomid;
+	}
+	
+	function gooffline(){
+		mRefRoom.child('/online').set(false);
+		window.location.href = "studyboard.html?roomid=" + roomid;
+	}
+	
 	var qsParm = new Array();
 
 	function qs() {
@@ -417,6 +533,7 @@ function createEventListeners(){
 			}
 		console.log(parms);
 		roomid = qsParm.roomid;
+		createEventListenerstextfields(qsParm.roomid);
 		
 		//Firebase Reference Varibles
 		mRefRoom = firebase.database().ref('StudyRooms/' + roomid);

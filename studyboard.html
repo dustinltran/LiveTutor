@@ -74,6 +74,7 @@
 	  
 	  #canvas-head{
 		margin-left:14%;
+		height:65px;
 	  }
 	  
 	  #chatdiv {
@@ -214,9 +215,10 @@
 			<div id="canvas-head" class="col-xs-10 col-sm-10 col-md-10">
 			<font color="white">
 				
-				<button id="onlinebutton" type="button" style="width:80px; float:right; margin-top:16px" class="btn btn-danger disabled">LIVE</button>
-				<h4 id="subjecttag">Math 123</h4>
-				<a href="#" ><h5 id="tutortag" >Tutor: Shane Elliott</h5></a> 
+				<button id="onlinebutton" type="button" style="width:130px; float:right; margin-top:16px" class="btn btn-default disabled">OFFLINE</button>
+				<h4 id="golive" style="float:right; margin-top:25px; margin-right:10px"></h4>
+				<h4 id="subjecttag"></h4>
+				<a href="#" ><h5 id="tutortag" >:</h5></a> 
 
 				</font>
 			</div>
@@ -231,19 +233,21 @@
 				<font color="grey">
 					<div class="row">
 					<div style="border-bottom:2px solid grey;" class="col-xs-12 col-sm-12 col-md-12">
-						<button type="submit" id="disconnectbutton" class="btn btn-danger" value="Disconnect" style="margin-top:10px; margin-bottom:10px; float:right; height:30px">Disconnect</button>
+
+						<button type="submit" id="recommendbutton" class="btn btn-danger" value="Disconnect" style="margin-top:10px; margin-bottom:10px; float:right; height:30px">Recommend Tutor!</button>
 						<span id="viewer-count" class="glyphicon glyphicon-eye-open"> </span>
-						<h4 id="viewcount"> 404</h4> 
+						<h4 id="viewcount"></h4> 
 						
 					</div>
 						
 					</div>
 					
 					<div class="col-xs-12 col-sm-12 col-md-12">
-						<h4> Class Description:</h4> 
-						<h4 id="desc"> nchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ip</h4> 
-						<h4> Tutor About Me:</h4> 
-						<h4 id="aboutme"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ip</h4> 
+						<p></p>
+						<p> Class Description:</p> 
+						<p id="desc"></h4> 
+						<p> Tutor About Me:</p> 
+						<p id="aboutme"></h4> 
 					
 					</div>
 					

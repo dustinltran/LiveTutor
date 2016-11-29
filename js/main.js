@@ -127,6 +127,7 @@
 		
 		firebase.auth().signOut().then(function() {
 			// Sign-out successful.
+			window.location.href = "index.html";
 			}, function(error) {
 			// An error happened.
 			});
@@ -159,6 +160,7 @@
 				Host: editroom.Host,
 				HostID: editroom.HostID,
 				numberOfUsers: editroom.numberOfUsers,
+				online: editroom.online,
 				RoomId: editroom.RoomId
 				
 				});
@@ -176,6 +178,7 @@
 				Host: username,
 				HostID: userId,
 				numberOfUsers: 1,
+				online: false,
 				RoomId: newroomid
 				});
 		}

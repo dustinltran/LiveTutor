@@ -108,5 +108,6 @@
 			document.getElementById("navbar").children[0].style.display = "none";
 			qs();
 		};
+		
 
  

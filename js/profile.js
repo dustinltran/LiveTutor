@@ -26,7 +26,9 @@
 			console.log("... Loading profile complete.");
 			
 			//Example of using profile_user:
-			document.getElementById('nametag').innerHTML = toTitleCase(profile_user.firstname) + " " + toTitleCase(profile_user.lastname);
+			document.getElementById('contacttag').innerHTML = firebase.auth().currentUser.email;
+			
+			document.getElementById('nametag2').innerHTML = toTitleCase(profile_user.firstname) + " " + toTitleCase(profile_user.lastname);
 			if (profile_user.AboutMe != ""){document.getElementById('aboutme').innerHTML = profile_user.AboutMe;}
 			
 		});

@@ -100,7 +100,13 @@
 		#profilepic{
 			float:left;
 		}
-		
+		#contact,
+		#about,
+		#username{
+			font-style: italic;
+			font-size: 20px;
+			font-weight: bold;
+		}
 		#nametag{
 			float:left;
 			font-size:80%;
@@ -214,11 +220,11 @@
 
 		<div id="profile-rooms-box-left" class="col-xs-6 col-sm-6 col-md-6">
 		<font color="white">
-			<h4>Name:</h4>
+			<h4 id="username">Name:</h4>
 			<h4 id="nametag2">name</h4> 
-			<h4>Contact Info:</h4>
+			<h4 id="contact">Contact Info:</h4>
 			<h4 id="contacttag">email@gmail.com</h4>  
-			<h4>About Me:</h4>
+			<h4 id="about">About Me:</h4>
 			<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
 		</font>
 		</div>
@@ -450,9 +456,6 @@
 																	<a href="#loginModal" class="dropdown-toggle" data-toggle="modal" data-dismiss="modal"><small>Have an account?</small></a>
 																</form>
 															</div>
-															<!--Footer if needed-->
-															<!-- <div class="modal-footer">
-                    </div> -->
 														</div>
 
 													</div>

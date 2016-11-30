@@ -487,30 +487,46 @@ function createEventListeners(){
 		});
 	}
 	
+	function fixmargins(str){
+		
+		//var boardinfobox = document.getElementById('board-info-box');
+		//var boardcontainer = document.getElementById('board-container');
+		//var mycanvas = document.getElementById('myCanvas');
+		//var canvashead = document.getElementById('canvas-head');
+		//boardinfobox.style.marginLeft = str;
+		//boardcontainer.style.marginLeft = str;
+		//mycanvas.style.marginLeft = str;
+		//canvashead.style.marginLeft = str;
+	}
+	
 	function resizeCanvas() {
 	
 				if (window.innerWidth > 1400){
 					canvas.width = 900;
 					canvas.height = 600;
 					scale = 1;
+					fixmargins("16px");
 				}
 				
 				else if (window.innerWidth > 1100){
 					canvas.width = 675;
 					canvas.height = 450;
 					scale = .75;
+					fixmargins("16px");
 				}
 				
 				else if (window.innerWidth > 600){ //scaled / 2
 					canvas.width = 450;
 					canvas.height = 300;
 					scale = .5;
+					fixmargins("16px");
 				}
 				
-				else if (window.innerWidth > 400){ //scaled / 2
+				else {
 					canvas.width = 225;
 					canvas.height = 150;
 					scale = .25;
+					fixmargins("0px");
 				}
 				
 				if (!connected){drawNoConnection();}

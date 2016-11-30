@@ -50,7 +50,7 @@
 	  #board-info-box2{
 		text-align:left;
 		background:white;
-		height:700px;
+		height:600px;
 	  }
 	  
 	  #board-container{
@@ -66,7 +66,7 @@
 	  
 	  #myCanvas{
 		margin-left:16%;
-		margin-bottom:50px;
+		margin-bottom:0px;
 		background: #000000;
 		border-bottom: 4px solid grey;
 		cursor:crosshair;
@@ -122,6 +122,18 @@
 		height:100%;
 		opacity: 1;
 		
+	  }
+	  
+	  #share-buttons{
+		margin-left:14%;
+	  }
+	  
+	  #share-buttons img {
+		padding: 5px;
+		border: 0;
+		box-shadow: 0;
+		display: inline;
+		text-align:left;
 	  }
 	  
     </style>
@@ -227,10 +239,38 @@
 	</div>
 	
 	<!-- Under Whiteboard Stuff-->
+	
 	<div class="row">
 		<div id="inner-body-info" class="col-xs-9 col-sm-9 col-md-9">
-			<div id="board-info-box" class="col-xs-6 col-sm-6 col-md-6">
+		
+		<!-- I got these buttons from simplesharebuttons.com -->
+		<div id="share-buttons" class="col-xs-9 col-sm-9 col-md-9">
+   
+			<!-- Facebook -->
+			<a href="http://www.facebook.com/sharer.php?u=https://LiveTutor.com" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+			</a>
+    
+			<!-- Google+ -->
+			<a href="https://plus.google.com/share?url=https://LiveTutor.com" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+			</a>
+    
+			<!-- Reddit -->
+			<a href="http://reddit.com/submit?url=https://LiveTutor.com&amp;title=LiveTutor" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+			</a>
+     
+			<!-- Twitter -->
+			<a href="https://twitter.com/share?url=https://LiveTutor.com&amp;text=LiveTutor%20&amp;hashtags=LiveTutor" target="_blank">
+				<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+			</a>
+
+		</div>
+			
+			<div id="board-info-box" class="col-xs-9 col-sm-9 col-md-9">
 				<font color="grey">
+					
 					<div class="row">
 					<div style="border-bottom:2px solid grey;" class="col-xs-12 col-sm-12 col-md-12">
 
@@ -242,7 +282,8 @@
 						
 					</div>
 					
-					<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="row">
+					<div class="col-xs-8 col-sm-8 col-md-8">
 						<p></p>
 						<p> Class Description:</p> 
 						<p id="desc"></h4> 
@@ -251,14 +292,17 @@
 					
 					</div>
 					
+					<div id="board-info-box2" class="col-xs-4 col-sm-4 col-md-4">
+						<h4>User List</h4>
+						<div id="userList"></div>
+					</div>
+					</div>
+					
 				</font>
 				
 			</div>
 			
-			<div id="board-info-box2" class="col-xs-3 col-sm-3 col-md-3">
-				<h4>User List</h4>
-				<div id="userList"></div>
-			</div>
+			
 			
 		</div>
 	</div>

@@ -192,7 +192,7 @@ function sendNoTagMessage (message) {
 
 //Sends Message to the Database.
 function sendMessage (message) {
-	if (connected){
+	if (mRefChat!=""){
 		mRefChat.child('message').remove();
 		mRefChat.child('username').set(username);
 		mRefChat.child('message').set(username + ": " + message);
@@ -234,7 +234,7 @@ function sendDisconnect(disconn) {
 function createDrawEventListeners(){
 	//Checks database for changes (new chat entries) to the Chat field.	
 	mRefChat.on('child_added', function (snapshot1){
-			if (connected){displayChatMessage(snapshot1.val());}
+			if (mRefChat!=""){displayChatMessage(snapshot1.val());}
 		});
 	
 	//Checks database for changes (new draw path entries) to the Draw Path field.		
@@ -333,6 +333,7 @@ function createEventListeners(){
     li.className = "userlistItem";
     li.id = obj.userID;
 	li.addEventListener("dblclick", function (){window.location.href = "profile.html?id=" + obj.userID});
+	li.addEventListener("click", function (){document.getElementById('chatOut').value = document.getElementById('chatOut').value + '@' + obj.username});
 	if (host === obj.userID)
 	{
 		li.style.fontWeight = 'bold';

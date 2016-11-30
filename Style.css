@@ -231,6 +231,14 @@ background-color: azure;
 		clear:both;
 	}
 
+.underconstruction{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}
+
 table#myTableData1 tr:nth-child(even) {
     background-color:  #F0FFFF;
 }

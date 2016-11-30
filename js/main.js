@@ -6,11 +6,11 @@
 		var email = document.getElementById('email').value;
 		var password = document.getElementById('login-password').value;        
 		if (email.length < 4) {
-			alert('Please enter an email address.');
+			alert('Please enter a valid email address.');
 			return;
         }
 		if (password.length < 4) {
-			alert('Please enter a password.');
+			alert('Please enter valid password.');
 			return;
         }
 		firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
@@ -25,6 +25,7 @@
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			console.log(errorMessage);
+			alert("This user and password does not exist");
 		});
 	}
 
@@ -75,7 +76,11 @@
 			userdisplay.textContent = toTitleCase(firstName + " " + lastName);
 			document.getElementById("usernamedisplay").href = "profile.html?" + "id=" + userId;
 
+		}, function(error){
+				alert(error);
 		});
+		
+		
 	}
 	
 	//Useful function to capitalize 

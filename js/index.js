@@ -28,7 +28,8 @@
 					div.setAttribute("id","testid");
 					
 					var img = document.createElement('img');
-					img.setAttribute("src","img/board.png");
+					if (rooms[key].online){img.setAttribute("src","img/board.png");}
+					else {img.setAttribute("src","img/boardoffline.png");}
 					img.setAttribute("alt","board");
 					img.setAttribute("style","width:180px;height:130px; float:left; margin-right:10px");
 					

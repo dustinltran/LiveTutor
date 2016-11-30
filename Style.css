@@ -14,6 +14,9 @@ label {
   color: #616161;
   font-size: 1.2em;
 }
+.product-name {
+  size: 10px;
+}
 
 .drawer-separator {
   height: 1px;

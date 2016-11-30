@@ -179,7 +179,7 @@
 
 									<!-- Forum-->
 									<li class="dropdown" id="navforum">
-										<a href="#" class="dropdown-toggle" data-toggle="modal"> Q and A's </a>
+										<a href="http://ec2-54-202-215-117.us-west-2.compute.amazonaws.com:8080/" class="dropdown-toggle"> Q/A </a>
 									</li>
 									<!-- End of Forum -->
 
@@ -225,7 +225,7 @@
 			<h4 id="contact">Contact Info:</h4>
 			<h4 id="contacttag">email@gmail.com</h4>  
 			<h4 id="about">About Me:</h4>
-			<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
+			<h4 style="float:left" id="aboutme">This is where you can tell us about yourself!</h4> 
 		</font>
 		</div>
 		
@@ -258,8 +258,37 @@
 			<b id = "nametag"></b>
 	</div>
 	
-				
 	<!-- Modal -->
+					<div id="editprofile" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h3 class="modal-title">About Me</h3>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+  										<div class="form-group col-sm-12">
+											<textarea id="aboutmeinputedit" class="form-control" rows="10" placeholder="Describe yourself..." id="comment"></textarea>
+										</div>					
+  									</div>
+
+									<a type="submit" id="save-button" value="Save" onclick="saveprofile();"; class="btn btn-info">SAVE</a>
+												
+								</div>
+								
+								<!--Footer if needed-->
+								<!-- <div class="modal-footer">
+								</div> -->
+								</div>
+
+								</div>
+							</div>
+	
+						<!-- Modal -->
   						<div id="editClassModal" class="modal fade" role="dialog">
   							<div class="modal-dialog">
 

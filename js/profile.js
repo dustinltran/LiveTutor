@@ -17,6 +17,13 @@
 		
 	}
 
+	function saveprofile(){
+		var currentuser = firebase.auth().currentUser;
+		
+		firebase.database().ref('/users/' + currentuser.uid).child('AboutMe').set(document.getElementById('aboutmeinputedit').value);
+		location.reload();
+	}
+	
 	function loadprofile(str){
 		console.log("Loading profile...");
 		firebase.database().ref('/users/' + str).once('value', function(snapshot) {
@@ -30,6 +37,21 @@
 			
 			document.getElementById('nametag2').innerHTML = toTitleCase(profile_user.firstname) + " " + toTitleCase(profile_user.lastname);
 			if (profile_user.AboutMe != ""){document.getElementById('aboutme').innerHTML = profile_user.AboutMe;}
+			document.getElementById('aboutmeinputedit').value = profile_user.AboutMe;
+			
+			var aboutdiv = document.getElementById('profile-rooms-box-left');
+			var editbutton = document.createElement('div');
+			
+			var currentuser = firebase.auth().currentUser;
+			if (currentuser != null){
+				if (currentuser.uid === str)
+				{
+					editbutton.innerHTML = '<a  id="editbutton" href="#editprofile" data-toggle="modal" style="margin-left:10px; float:left" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="exit-profile">Edit</a>';
+					aboutdiv.appendChild(editbutton);
+				}
+			}
+			
+			
 			
 		});
 	}

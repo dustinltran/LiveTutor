@@ -38,6 +38,10 @@
 		var email = document.getElementById('register_email').value;
 		var password = document.getElementById('register_password').value;
 		var passwordConfirm = document.getElementById('password_confirmation').value;
+		if (firstName.length <1 && lastName.length <1){
+		alert('Enter a name');
+			return;
+		}
 		if (email.indexOf('&') !==-1 || email.indexOf('?') !==-1 || email.indexOf('$') !==-1 || email.indexOf('^') !==-1 || email.indexOf('*') !==-1){
 		alert('Enter a valid email address');
 			return;

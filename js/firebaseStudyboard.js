@@ -294,7 +294,7 @@ function disconnection(){
 			chatreplace = newchat.replace("@#thumbsup#@", "");
 			var icon = document.createElement('div');
 			icon.innerHTML = chatreplace + '<span class="glyphicon glyphicon-thumbs-up"></span>';
-			icon.style.color = "blue";
+			icon.style.color = "#76c0e2";
 			msg.appendChild(icon);
 		}
 		
@@ -302,7 +302,7 @@ function disconnection(){
 			chatreplace = newchat.replace("@#PERMABLE#@", "");
 			var permmessage = document.createElement('div');
 			permmessage.innerHTML = chatreplace;
-			permmessage.style.color = "green";
+			permmessage.style.color = "#76c0e2";
 			msg.appendChild(permmessage);
 		}
 		
@@ -310,7 +310,7 @@ function disconnection(){
 			chatreplace = newchat.replace("@#PERMDISABLE#@", "");
 			var permmessage = document.createElement('div');
 			permmessage.innerHTML = chatreplace;
-			permmessage.style.color = "red";
+			permmessage.style.color = "#932216";
 			msg.appendChild(permmessage);
 		}
 		

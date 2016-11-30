@@ -44,15 +44,18 @@
 		}
 		
 		#profilehead{
-			position:fixed;
-			background:#555555;
-			border-bottom: 30px solid #333333;
-			top:6%;
-			height:170px;
 			color: white;
+			font-size:250%;
+			margin-top:0px;
+			background:#333333;
+			padding:20px;
+			top:6%;
+			position:fixed;
 		}
 		
 		#profile-messages-body{
+			border-top-right-radius:10px;
+			border-top-left-radius:10px;
 			border-left: 3px solid #DDDDDD;
 			border-right: 3px solid #DDDDDD;
 			background:white;
@@ -61,14 +64,22 @@
 		}
 		
 		
-		#profile-rooms-box{
-			height:400px;
-			background:white;
-			margin-top:70px;
+		#profile-rooms-box-left{
+			height:450px;
+			margin-top:10px;
 			margin-bottom:10px;
 			overflow:scroll;
 			overflow-x: hidden;
-			border-left: 2px solid grey;
+			color: grey;
+		}
+		
+		#profile-rooms-box-right{
+			height:450px;
+			background:white;
+			margin-top:10px;
+			margin-bottom:10px;
+			overflow:scroll;
+			overflow-x: hidden;
 			color: grey;
 		}
 		
@@ -92,28 +103,21 @@
 		
 		#nametag{
 			float:left;
-			font-size:300%;
-			margin-top:50px;
-		}
-		
-		#profile-aboutme-topper{
-			color: white;
-			font-size:250%;
-			margin-top:220px;
-			background:#333333;
-			padding:20px;
+			font-size:80%;
 		}
 		
 		#profile-inner-body-info{
-			height:40px;
-			background:#EEEEEE;
+			margin-top:120px;
+			height:500px;
+			background:#555555;
 			margin-bottom:10px;
-			border-bottom: 3px solid #AAAAAA;
+			border-bottom: 4px solid #333333;
 			color: grey;
 			
 		}
 		
 		#messages{
+			margin-top:30px;
 			list-style-type:none; 
 		}
 		
@@ -204,24 +208,38 @@
 				      <!-- PROFILE -->
 
      <!-- Under Whiteboard Studd-->
-	
-	<div id="profile-aboutme-topper" class="col-xs-12">
-			<span class="glyphicon glyphicon-user"></span>
-			About Me
-	</div>
 		
-	<div id="profile-inner-body-info" class="col-md-12">
+	<div id="profile-inner-body-info" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+
+		<div id="profile-rooms-box-left" class="col-xs-6 col-sm-6 col-md-6">
+		<font color="white">
+			<h4>Name:</h4>
+			<h4 id="nametag2">name</h4> 
+			<h4>Contact Info:</h4>
+			<h4 id="contacttag">email@gmail.com</h4>  
+			<h4>About Me:</h4>
 			<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
+		</font>
+		</div>
 		
+		<div id="profile-rooms-box-right" class="col-xs-6 col-sm-6 col-md-6">
+			<div id="classes-div"><h3>Tutor Schedule:</h3></div>
+							
+			<ul id="profile-searchlist">
+			</ul>
+				
+		</div>
 	</div>
+	
 	
 	<!-- Message Board-->
 	<div id="profile-messages-body" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-		<div id="message-box" class="col-xs-10 col-sm-10 col-md-10">
+		<div id="message-box" class="col-xs-12 col-sm-12 col-md-12">
 			<input type="text" id="messageinput" class="form-control" placeholder=":) Message..."/>	
-			<button type="button" onclick="sendMessage();" class="btn btn-info">POST</button>
+			<button type="button" style="float:right" onclick="sendMessage();" class="btn btn-info">POST</button>
+			<p>Post to this Users Wall!</p>
 			<div>	
-				<ul id="messages" class="col-xs-10 col-sm-10 col-md-10">
+				<ul id="messages" class="col-xs-12 col-sm-12 col-md-12">
 					<li></li>
 				</ul>
 			</div>
@@ -229,7 +247,7 @@
 	</div>
 	
 	<div id="profilehead" class="col-xs-12 ">
-			<i id="profilepic" class="material-icons" style = " font-size: 1000%">account_circle</i>
+			<i id="profilepic" class="material-icons" style = " font-size: 100%">account_circle</i>
 			<b id = "nametag"></b>
 	</div>
 	

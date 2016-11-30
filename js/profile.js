@@ -127,7 +127,25 @@
 			data = snapshot.val();
 			var messageboard = document.getElementById('messages');
 			var message = document.createElement('li');
-			message.innerHTML = data.user + ": " + data.message + " " + data.timestamp;
+			var div = document.createElement('div');
+			
+			div.setAttribute('class', 'col-lg-12');
+			div.style.height = "35px";
+			div.style.borderTop = "1px solid #EEEEEF";
+			div.style.padding = "5px"
+			
+			var messagediv = document.createElement('div');
+			var timestampdiv = document.createElement('div');
+			messagediv.style.float = 'left';
+			timestampdiv.style.float = 'right';
+			
+			messagediv.innerHTML = data.user + ": " + data.message;
+			timestampdiv.innerHTML = data.timestamp;
+			
+			div.appendChild(messagediv);
+			div.appendChild(timestampdiv);
+			
+			message.appendChild(div);
 			messageboard.insertBefore(message, messageboard.childNodes[0]);
 			
 			});

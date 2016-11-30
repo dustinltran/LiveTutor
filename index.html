@@ -61,7 +61,6 @@
   		
   		#searchlist{
   			list-style-type:none; 
-  			margin: 0; 
   			padding:10px;
   			overflow: hidden;
   			margin-top:30px;
@@ -76,11 +75,9 @@
   			border-radius: 10px;
   		}
   		
-  		.carousel-inner > .item > img,
-  		.carousel-inner > .item > a > img {
-  		width: 100%;
-  		margin: auto;
-    }
+      #theCarousel{
+        width: 100%;
+      }
   		
   	</style>
 
@@ -202,15 +199,15 @@
       <!-- Wrapper for slides -->
   		<div class="carousel-inner" role="listbox">
   		<div class="item active">
-  			<img src="img/boccardo.jpg" alt="Chania" width="1080dp" height="345dp">
+  			<img class="carousle-image" src="img/boccardo.jpg">
   		</div>
 
   		<div class="item">
-  			<img src="img/coraltest.jpg" alt="Chania" width="1080dp" height="345dp">
+  			<img class="carousle-image" src="img/coraltest.jpg" alt="Chania">
   		</div>
       
   		<div class="item">
-  			<img src="img/wonderlakemoose.jpg" alt="Flower" width="1080dp" height="345dp">
+  			<img class="carousle-image" src="img/wonderlakemoose.jpg">
   		</div>
   		</div>
   	</div>
@@ -231,12 +228,13 @@
 
   					</div>
 
+              <div id="carousel-controls">
   							<a class="left carousel-control" href="#theCarousel" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span></a>
 
                 <a class="right carousel-control" href="#theCarousel" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+              </div>
 
   						</div>
   						<!-- End of Carousel -->
@@ -449,35 +447,24 @@
   																				</div>
   																				
 
-                      </div>
-  																			</div>
-
+                                  </div>
+  															</div>
                                 
-  																		</div>
-                                      <footer class="mdl-mini-footer">
-                                          <div class="mdl-mini-footer__left-section">
-                                              <div class="mdl-logo">
-                                                  About Us:
-                                              </div>
-                                              <ul class="mdl-mini-footer__link-list">
-                                                  <li><a href="https://firebase.google.com/docs/auth/">Members</a></li>
-                                                  <li><a href="https://firebase.google.com/docs/reference/js/index-all">Contact</a></li>
-                                              </ul>
-                                          </div>
-                                      </footer>
-  																	</div>
+  														</div>
+
+												</div>
                                     
-  <!--         <footer class="mdl-mini-footer">
-              <div class="mdl-mini-footer__left-section">
-                  <div class="mdl-logo">
-                      About Us:
-                  </div>
-                  <ul class="mdl-mini-footer__link-list">
-                      <li><a href="https://firebase.google.com/docs/auth/">Members</a></li>
-                      <li><a href="https://firebase.google.com/docs/reference/js/index-all">Contact</a></li>
-                  </ul>
-              </div>
-          </footer> -->
+                            <footer class="mdl-mini-footer navbar-fixed-bottom">
+                                <div class="mdl-mini-footer__left-section">
+                                    <div class="mdl-logo">
+                                        About Us:
+                                    </div>
+                                    <ul class="mdl-mini-footer__link-list">
+                                        <li><a href="https://firebase.google.com/docs/auth/">Members</a></li>
+                                        <li><a href="https://firebase.google.com/docs/reference/js/index-all">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </footer>
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

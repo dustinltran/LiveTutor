@@ -2,7 +2,7 @@
 	
 	//SEARCHING DATABASE -- This function search the database for matches to the users search and creates listitems to display the results/////////
 	function searchdatabase(str){
-
+		document.getElementById("carousel-controls").style.display = "none";
 		console.log("Attempting to search Database...");
 		
 		var searchRooms = firebase.database().ref('StudyRooms');	

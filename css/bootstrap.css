@@ -1120,9 +1120,14 @@ img {
 .thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
+  background-size: cover;
   display: block;
   max-width: 100%;
+  width: 100%;
   height: 645px !important;
+}
+.carousle-image{
+  width:100%;
 }
 .img-rounded {
   border-radius: 6px;
@@ -6253,6 +6258,7 @@ button.close {
 }
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
+  width: 100%;
   line-height: 1;
   margin: auto;
 }

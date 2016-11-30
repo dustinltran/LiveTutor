@@ -24,7 +24,7 @@
 					var newitem = document.createElement('li');
 					
 					var div = document.createElement('div');
-					div.setAttribute("class","col-sm-12 col-md-12 col-lg-12");
+					div.setAttribute("class","class-item col-sm-12 col-md-12 col-lg-12");
 					div.setAttribute("id","testid");
 					
 					var img = document.createElement('img');

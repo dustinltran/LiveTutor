@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-amber.min.css" />
 
     <!-- Link the CSS files-->
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <!-- <link rel="stylesheet" href="css/custom.css"> -->
@@ -43,6 +44,24 @@
   		}
       .class-item{
         margin-bottom: 100px;
+      }
+
+      .logo {
+        border: 3px;
+        border-radius: 15px;
+        background-color: #CCCCCC;
+        margin: 0px -20px -50px -20px;
+        padding-bottom: 60px;
+        padding-left: 100px;
+        padding-top: 10px;
+        font-size: 50px;
+        font-family: 'Patua One';
+        font-weight: bold;
+        color: #1f1f14;
+      }
+
+      .search-border {
+        opacity: 0.85;
       }
   		
   		#searchbar{
@@ -163,26 +182,7 @@
   							</div> <!-- Collapsed Menu -->
   						</div> <!--End of container-fluid-->
   					</nav> <!-- End of NavBar-->
-  					<!-- Navigation 
-        <nav class="mdl-navigation">
-            <div class="mdl-navigation__link">
-              <form id="search" method="get" action="http://www.google.com">
-               <input type="text" id="tfq" class="tftextinput2" name="q" size="80" maxlength="100" Placeholder="Search our website">
-               <input type="submit" value="Search" class="tfbutton2">
-              </form>
-              <div class="clear"></div>
-            </div>
-            <a class="mdl-navigation__link" href="javascript:void(0)" id="sign-in-button">
-                <i class="material-icons">account_circle</i> <span id="account">Sign In</span>
-            </a>
-            <a class="mdl-navigation__link" href="javascript:void(0)" id="account-menu-button">
-                
-            </a>
-            
-            <a class="mdl-navigation__link" href="javascript:void(0)" id="sign-up-button"><i class="material-icons">mood_bad</i><span id="sign-up">
-               Sign out</span>
-                </a>
-        </nav> -->
+  					<!-- Navigation  -->
   				</div>    
 
   	
@@ -215,11 +215,13 @@
   		</div>
   	</div>
   	</div>
+
   							
   							<!-- Main Page SearchBar -->
   					<div class="search-border">
   									<div id="searchbar" class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3">
 
+                      <h3 class="logo"> Live Tutor </h3>
   											<div class="input-group">
   												<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term-page">
   													<div class="input-group-btn">
@@ -246,7 +248,7 @@
   							<div id="searchbody" class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2">
   							
   									
-  									<div id="classes-div"><h3>Classes: @#$Search</h3></div>
+  									<div id="classes-div"><h3>Classes: @#$Search</h3></div> <!-- Is this needed? -->
   								
   									<ul id="searchlist">
   									</ul>

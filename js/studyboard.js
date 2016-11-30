@@ -3,6 +3,7 @@
 	 //==================================================
 	 //Varibles
 	  var canvas = document.getElementById('myCanvas');
+	  var canvasdiv = document.getElementById('canvasDiv');
       var context = canvas.getContext('2d');
       var centerX = canvas.width / 2;
       var centerY = canvas.height / 2;
@@ -12,6 +13,9 @@
 	  var mouseY = 0;
 	  var linesize = 5;
 	  var rect = canvas.getBoundingClientRect();
+	  var scale = 1;
+	  var connected;
+
 	  
 	 //==================================================
 	 //Draw and Clear Commands
@@ -24,11 +28,13 @@
 	}
 
 	function drawNoConnection(){
-		context.fillStyle = "#696969";
-		context.fillRect(0, 0, 1000, 1000);
+		context.fillStyle = "#222222";
+		context.fillRect(0, 0, 1000 * scale, 1000 * scale);
 		context.fillStyle = "white";
-		context.font="40px Georgia";
-		context.fillText("You are not connected",180,230);
+		if (scale < .4){context.font="20px Georgia";}
+		else if (scale < 1){context.font="40px Georgia";}
+		else{context.font="80px Georgia";}
+		context.fillText(":( OFFLINE",canvas.width / 4,canvas.height / 2);
 		
 	}
 	
@@ -44,26 +50,17 @@
 		//position x,y and the newst mouse position. 
 		dist = distance(x1,y1,x2,y2);
 		
-		if ((dist > 5) || ls < 11){
 		context.strokeStyle = color;
 		context.beginPath();
 		context.moveTo(x1,y1);
 		context.lineTo(x2,y2);
 		context.strokeStyle = color;
-		lw = ls / (dist * .999/(ls*.02))
-		if (lw < ls/2){lw = ls/2;}
-		if (ls < 9){lw = ls;}
+		lw = ls * scale;
 		context.lineWidth=lw;
+		context.lineCap = 'round';
 		context.stroke();}
 
-		//Draw solid dots when dististance is smaller to hide janky path edges
-		if (dist < (ls * 2)){
-		context.beginPath();
-		context.arc(x2, y2, Math.abs((ls - dist)/3), 0, 2 * Math.PI, false);
-		context.fillStyle = color;
-		context.fill();}
-	
-		}
+		
 	}
 	 //==================================================
 	 //Key,Mouse, Button Input
@@ -74,9 +71,12 @@
 		linesize = parseInt(document.getElementById('selectThick').value);
 		linecolor = document.getElementById('selectColor').value;
 		rect = canvas.getBoundingClientRect();
-		draw(mouseX, mouseY, mouse.clientX - rect.left, mouse.clientY - rect.top, linecolor, linesize);	
-		sendDrawPath(mouseX, mouseY, mouse.clientX - rect.left, mouse.clientY - rect.top, linecolor, linesize);
 		
+		if (permission === "1")
+			{
+				draw(mouseX + 1, mouseY, mouse.clientX - rect.left, mouse.clientY - rect.top, linecolor, linesize);	
+				sendDrawPath(mouseX/scale + 1, mouseY/scale, (mouse.clientX - rect.left)/scale,(mouse.clientY - rect.top)/scale, linecolor, linesize);
+			}
 		mouseX = mouse.clientX - rect.left; //Update mouse position
 		mouseY = mouse.clientY - rect.top;
 	}
@@ -84,6 +84,7 @@
 	//Funtion is called every time the mouse unclicks
 	document.onmouseup = function(mouse){	
 		mousedown=false;
+		//save();
 	}
 	
 	//When the Mouse Moves Update Coordinates
@@ -93,8 +94,10 @@
 		linesize = parseInt(document.getElementById('selectThick').value);
 		linecolor = document.getElementById('selectColor').value;
 		rect = canvas.getBoundingClientRect();
-		draw(mouseX, mouseY, mouse.clientX - rect.left, mouse.clientY - rect.top, linecolor, linesize);	
-		sendDrawPath(mouseX, mouseY, mouse.clientX - rect.left, mouse.clientY - rect.top, linecolor, linesize);
+		if (permission === "1")
+			{
+				sendDrawPath(mouseX/scale, mouseY/scale, (mouse.clientX - rect.left)/scale,(mouse.clientY - rect.top)/scale, linecolor, linesize);
+			}
 		}		
 		
 		mouseX = mouse.clientX - rect.left; //Update mouse position
@@ -110,19 +113,18 @@
 		}
 	}
 	
+	//Clicking Send
+	document.getElementById("thumb-glyphicon").onclick = function () {
+		sendMessage('@#thumbsup#@'); //Send thumbsup to clients
+		}
+	
 	//Clicking Clear
 	document.getElementById("clear").onclick = function () {
-		clearAll();
-		sendClear("clear"); //Send clear function to clients
-	
-	}
-	
-	//Clicking Disconnect
-	document.getElementById("disconnectbutton").onclick = function () {
-		clearAll();
-		drawNoConnection();
-		sendDisconnect("disconnect"); //Send clear function to clients
-		displayChatMessage("You have Disconnected");
+		if (permission === "1")
+			{
+				clearAll();
+				sendClear("clear"); //Send clear function to clients
+			}
 	
 	}
 	
@@ -133,5 +135,4 @@
 	function distance(x1, y1, x2, y2){ 
 		return Math.abs(Math.sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) ));
 	}
-	
-	drawNoConnection();
+

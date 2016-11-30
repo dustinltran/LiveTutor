@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset=utf-8></meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+		<!-- Mobile viewing enhancement -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"></meta>
+		<!-- Description should be roughly 155 characters, no double quotes, use keywords -->
+		<meta name="description" content="Livetutor and Firebase" /></meta>
+	<!-- Format as Primary Keyword - Secondary Keyword | Brand Name, keep under 55 characters -->
+	<title>Livetutor SJSU</title>
+
+    <link rel="shortcut icon" href="img/Logo.png">
+	<!-- Minimize the number of CSS files for performance -->
+	<!-- <link rel="shortcut icon" href="Picture1.png"> -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100,300,700italic,500,500italic,400italic,300italic,100italic|Roboto+Condensed:300' rel='stylesheet' type='text/css'></link>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-amber.min.css"></link>
+
+	<!-- Link the CSS files-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css"></link>
+	<!-- <link rel="stylesheet" href="css/custom.css"> -->
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css"></link>
+
+	<!-- LiveTutor CSS -->
+	<link href="css/Style.css" rel="stylesheet" type="text/css"></link>
+
+	<style>
+		.list-schedule{
+			list-style-type:none; 
+			margin: 0; 
+			padding: 0; 
+			overflow: hidden;
+		}
+
+		.testbox{
+			background-color: azure;
+			margin: 10px; 
+			padding: 10px; 
+			border:2px solid #000000;
+		}
+		
+		#profilehead{
+			color: white;
+			font-size:250%;
+			margin-top:0px;
+			background:#333333;
+			padding:20px;
+			top:6%;
+			position:fixed;
+		}
+		
+		#profile-messages-body{
+			border-top-right-radius:10px;
+			border-top-left-radius:10px;
+			border-left: 3px solid #DDDDDD;
+			border-right: 3px solid #DDDDDD;
+			background:white;
+			margin-top:0px;
+			color: grey;
+		}
+		
+		
+		#profile-rooms-box-left{
+			height:450px;
+			margin-top:10px;
+			margin-bottom:10px;
+			overflow:scroll;
+			overflow-x: hidden;
+			color: grey;
+		}
+		
+		#profile-rooms-box-right{
+			height:450px;
+			background:white;
+			margin-top:10px;
+			margin-bottom:10px;
+			overflow:scroll;
+			overflow-x: hidden;
+			color: grey;
+		}
+		
+		#profile-searchlist{
+			list-style-type:none;
+		}
+		
+		#message-box{
+			height:100px
+			border-bottom: 1px solid grey;
+			
+		}
+		
+		#messageinput{
+			margin-top:10px;
+		}
+		
+		#profilepic{
+			float:left;
+		}
+		#contact,
+		#about,
+		#username{
+			font-style: italic;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		#nametag{
+			float:left;
+			font-size:80%;
+		}
+		
+		#profile-inner-body-info{
+			margin-top:120px;
+			height:500px;
+			background:#555555;
+			margin-bottom:10px;
+			border-bottom: 4px solid #333333;
+			color: grey;
+			
+		}
+		
+		#messages{
+			margin-top:30px;
+			list-style-type:none; 
+		}
+		
+		
+		
+	</style>
+
+</head>
+<body>
+	<div class="container-fluid">
+		<!--Start of NavBar-->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<!-- Search Bar -->
+					<!--Toggles navbar when displayed on smaller screen-->
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expended="false">
+						<!--To hode info from screen readers-->
+						<span class="sr-only"></span>
+						<!--3 bars drawn inside of the expand button-->
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Logo -->
+					<div class="nav-bar-logo">
+							<a class="pull-left" href="index.html"><img src="img/Logo.png"></a>
+							<a class="pull-left product-name">LiveTutor</a>
+							</div>
+						</div>
+						<!--Toggles navbar when displayed on smaller screen-->
+						<!--Start Collapse Menu-->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right" id="navbar">
+								<!-- SearchBar -->
+								<li>  
+									<form class="navbar-form" role="search">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+												<div class="input-group-btn">
+													<button onclick="searchnavbar();" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+												</div>
+											</div>
+										</form>
+									</li>
+									<!-- End SearchBar> -->
+				  
+				   <!-- My Schedule-->
+									<li class="dropdown" id="navmyschedule">
+										<a href="#myscheduleModal" class="dropdown-toggle" data-toggle="modal"> My Schedule </a>
+									</li>
+									<!-- End of Forum -->
+
+									<!-- Forum-->
+									<li class="dropdown" id="navforum">
+										<a href="#" class="dropdown-toggle" data-toggle="modal"> Q and A's </a>
+									</li>
+									<!-- End of Forum -->
+
+									<!-- Login-->
+									<li class="dropdown" id="navlogin">
+										<a href="#loginModal" class="dropdown-toggle" data-toggle="modal"> Login </a>
+									</li>
+									<!-- End of Login -->
+
+									<!-- Register-->
+									<li class="dropdown" id="navregister">
+										<a href="#registerModal" class="dropdown-toggle" data-toggle="modal"> Register </a>
+									</li>
+									<!-- End of Register-->
+
+									<!-- Username display-->
+									<li class="dropdown">
+										<a href="profile.html" id ="usernamedisplay" data-send-to-profile="123456" class="dropdown-toggle"> Username </a>
+									</li>
+									<!-- End of username display -->
+
+									<!-- Logout-->
+									<li class="dropdown" id="navlogout">
+										<a href="#logoutModal" onclick="Logout();return false;" class="dropdown-toggle"> Logout </a>
+									</li>
+									<!-- End of Logout -->
+								</ul>
+							</div> <!-- Collapsed Menu -->
+						</div> <!--End of container-fluid-->
+					</nav> <!-- End of NavBar-->
+				</div>    
+
+				      <!-- PROFILE -->
+
+     <!-- Under Whiteboard Studd-->
+		
+	<div id="profile-inner-body-info" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+
+		<div id="profile-rooms-box-left" class="col-xs-6 col-sm-6 col-md-6">
+		<font color="white">
+			<h4 id="username">Name:</h4>
+			<h4 id="nametag2">name</h4> 
+			<h4 id="contact">Contact Info:</h4>
+			<h4 id="contacttag">email@gmail.com</h4>  
+			<h4 id="about">About Me:</h4>
+			<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
+		</font>
+		</div>
+		
+		<div id="profile-rooms-box-right" class="col-xs-6 col-sm-6 col-md-6">
+			<div id="classes-div"><h3>Tutor Schedule:</h3></div>
+							
+			<ul id="profile-searchlist">
+			</ul>
+				
+		</div>
+	</div>
+	
+	
+	<!-- Message Board-->
+	<div id="profile-messages-body" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
+		<div id="message-box" class="col-xs-12 col-sm-12 col-md-12">
+			<input type="text" id="messageinput" class="form-control" placeholder=":) Message..."/>	
+			<button type="button" style="float:right" onclick="sendMessage();" class="btn btn-info">POST</button>
+			<p>Post to this Users Wall!</p>
+			<div>	
+				<ul id="messages" class="col-xs-12 col-sm-12 col-md-12">
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div id="profilehead" class="col-xs-12 ">
+			<i id="profilepic" class="material-icons" style = " font-size: 100%">account_circle</i>
+			<b id = "nametag"></b>
+	</div>
+	
+				
+	<!-- Modal -->
+	<div id="editClassModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		
+	<!-- Modal content-->
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 id="title-class-edit" class="modal-title">Edit Class</h3>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<h5>Subject:</h5>
+						<div class="row">
+							<div class="form-group col-sm-6">
+								<input type="text" name="subject" id="subject" class="form-control input-sm" placeholder="Class Subject...">
+								</div>
+							</div>
+							<h5>Days Available:</h5>
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<input type="text" name="day" id="day" class="form-control input-sm" placeholder="Days Available...">
+									</div>
+								</div>
+								<h5>Time:</h5>
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<input type="text" name="time" id="time" class="form-control input-sm" placeholder="Time Available...">
+										</div>
+									</div>
+									<h5>Class Description:</h5>
+								<div class="row">
+										<div class="form-group col-sm-6">
+											<input type="text" name="descr" id="descr" class="form-control input-sm" placeholder="Class Description...">
+										</div>
+								</div>
+
+								<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6">
+										<div class="form-group">
+											<a id="submitbutton" href="#myscheduleModal" class="btn btn-info btn-block" onclick="newclass();" data-toggle="modal" data-dismiss="modal">SUBMIT</a>
+										</div>
+								</div>
+
+								<div class="col-xs-6 col-sm-6 col-md-6">
+										<div class="form-group">
+											<a id="deletebutton" href="#" class="btn btn-info btn-block" onclick="deleteClass();" data-toggle="modal" data-dismiss="modal">DELETE</a>
+										</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+			<!--Footer if needed-->
+			<!-- <div class="modal-footer"></div> -->
+			</div>
+
+		</div>
+	</div>
+					<!-- Modal -->
+
+					<!-- Modal -->
+					<div id="myscheduleModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h3 class="modal-title">My Schedule</h3>
+								</div>
+
+								<div class="modal-body">
+									<form role="form">
+										<h4 class="modal-title">These are the classes you Tutor:</h4>
+										<h4> </h4>
+
+										<table id="myschedule-table" class="table table-bordered" >
+											<thead>
+												<tr>
+													<th>Subject</th>
+													<th>Day</th>
+													<th>Time</th>
+													<th>Description</th>
+													<th>Join</th>
+													<th>Edit</th>
+												</tr>
+											</thead>
+											<tbody id="myschedule-tablebody">
+
+											</tbody>
+										</table>
+
+										<h4> </h4>
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<a id="addclass" href="#editClassModal" class="btn btn-info btn-block" onclick="addclassLayout();" data-toggle="modal" data-dismiss="modal">Add Class</a>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!--Footer if needed-->
+								<!-- <div class="modal-footer">
+                    </div> -->
+							</div>
+
+						</div>
+					</div>
+					<!-- Modal -->
+
+					<!-- Modal -->
+					<div id="loginModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h3 class="modal-title">Login</h3>
+								</div>
+								<div class="modal-body">
+									<form role="form">
+										<div class="row">
+											<div class="form-group col-sm-6">
+												<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" data-bind="email">
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="form-group col-sm-6">
+													<input type="password" name="password" id="login-password" class="form-control input-sm" placeholder="Password" data-bind="password">
+													</div>
+												</div> 
+												<a id="login-button" value="Register" class="btn btn-info btn-block">Login</a>
+												<a href="#registerModal" class="dropdown-toggle" data-toggle="modal" data-dismiss="modal"><small>Register</small></a>
+
+											</form>
+										</div>
+										<!--Footer if needed-->
+										<!-- <div class="modal-footer">
+                    </div> -->
+									</div>
+
+								</div>
+							</div>
+							<!-- Modal -->
+							<div id="registerModal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h3 class="modal-title">Register</h3>
+										</div>
+										<div class="modal-body">
+											<form role="form">
+												<div class="row">
+													<div class="col-xs-6 col-sm-6 col-md-6">
+														<div class="form-group">
+															<input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+															</div>
+														</div>
+														<div class="col-xs-6 col-sm-6 col-md-6">
+															<div class="form-group">
+																<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+																</div>
+															</div>
+														</div>
+
+														<div class="form-group">
+															<input type="email" name="email" id="register_email" class="form-control input-sm" placeholder="Email Address" data-bind="email">
+															</div>
+
+															<div class="row">
+																<div class="col-xs-6 col-sm-6 col-md-6">
+																	<div class="form-group">
+																		<input type="password" name="password" id="register_password" class="form-control input-sm" placeholder="Password" data-bind="password">
+																		</div>
+																	</div>
+																	<div class="col-xs-6 col-sm-6 col-md-6">
+																		<div class="form-group">
+																			<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+																			</div>
+																		</div>
+																	</div>
+																	<a type="submit" id="confirm-button" value="Register" class="btn btn-info btn-block">Register</a>
+																	<a href="#loginModal" class="dropdown-toggle" data-toggle="modal" data-dismiss="modal"><small>Have an account?</small></a>
+																</form>
+															</div>
+														</div>
+
+													</div>
+												</div>
+						
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+	<!-- Initialize Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+	<script>
+
+
+	var userId = "";
+	var username = "";
+		
+    var config = {
+		apiKey: "AIzaSyCBHKzuKatLk4GZjorFHbPfutXgdDwDBjM",
+		authDomain: "livetutorfinal.firebaseapp.com",
+		databaseURL: "https://livetutorfinal.firebaseio.com",
+		storageBucket: "livetutorfinal.appspot.com",
+		messagingSenderId: "968804506441"
+		};
+		firebase.initializeApp(config);
+ 
+		firebase.auth().onAuthStateChanged(function(user) {
+  			if (user) {
+				userId = user.uid;
+				username = user.displayName;
+				LoginSetup();
+			} else {
+			// No user is signed in.
+			}
+		});
+	</script>
+	<script src = "js/main.js"></script>
+	<script src = "js/profile.js"></script>
+
+
+
+	</body>
+
+</html>
+													

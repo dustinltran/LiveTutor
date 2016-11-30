@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+  <head>
+    <meta charset=utf-8 />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile viewing enhancement -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <!-- Description should be roughly 155 characters, no double quotes, use keywords -->
+    <meta name="description" content="Livetutor and Firebase" />
+    <!-- Format as Primary Keyword - Secondary Keyword | Brand Name, keep under 55 characters -->
+    <title>Livetutor SJSU</title>
+    <!-- Minimize the number of CSS files for performance -->
+    <link rel="shortcut icon" href="img/Logo.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100,300,700italic,500,500italic,400italic,300italic,100italic|Roboto+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-amber.min.css" />
+
+    <!-- Link the CSS files-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="css/custom.css"> -->
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>  
+
+    <!-- LiveTutor CSS -->
+    <link href="css/Style.css" rel="stylesheet" type="text/css" />
+
+
+  	<style>
+  		.list-schedule{
+  			list-style-type:none; 
+  			margin: 0; 
+  			padding: 0; 
+  			overflow: hidden;
+  		}
+
+  		.testbox{
+  			background-color: azure;
+  			margin: 10px; 
+  			padding: 10px; 
+  			border:2px solid #000000;
+  		}
+  		.underconstruction{
+        margin: auto;
+      }
+  		#searchbar{
+  			position:fixed;
+  			top:40%;
+        border:10px;
+  		
+  		}
+  		
+  		#searchbody{
+  			margin-top:70px;
+  			top:0px;
+  			bottom:0px;
+  		}
+  		
+  		#classes-div{
+  			border-bottom: 1px solid #888888;
+  		}
+  		
+  		#searchlist{
+  			list-style-type:none; 
+  			padding:10px;
+  			overflow: hidden;
+  			margin-top:30px;
+  			margin-bottom:30px;
+  		}
+  		
+  		#testid{
+  			margin:5px;
+  			padding:10px;
+  			background-color: #FFFFFF;
+  			box-shadow: 1px 1px 1px 1px #888888;
+  			border-radius: 10px;
+  		}
+  		
+      #theCarousel{
+        width: 100%;
+      }
+  		
+  	</style>
+
+  </head>
+  <body>
+  	<div class="container-fluid">
+  		<!--Start of NavBar-->
+  		<nav class="navbar navbar-default navbar-fixed-top">
+  			<div class="container-fluid">
+  				<div class="navbar-header">
+  					<!-- Search Bar -->
+  					<!--Toggles navbar when displayed on smaller screen-->
+  					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expended="false">
+  						<!--To hode info from screen readers-->
+  						<span class="sr-only"></span>
+  						<!--3 bars drawn inside of the expand button-->
+  						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>
+  						<span class="icon-bar"></span>
+  					</button>
+  					<!-- Logo -->
+  					<div class="nav-bar-logo">
+  							<a class="pull-left" href="index.html"><img src="img/Logo.png"></a>
+  							</div>
+  						</div>
+  						<!--Toggles navbar when displayed on smaller screen-->
+  						<!--Start Collapse Menu-->
+  						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  							<ul class="nav navbar-nav navbar-right" id="navbar">
+  								<!-- SearchBar -->
+  								<li>  
+  									<form class="navbar-form" role="search">
+  										<div class="input-group">
+  											<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+  												<div class="input-group-btn">
+  													<button onclick="searchnavbar();" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+  												</div>
+											</div>
+										</form>
+									</li>
+									<!-- End SearchBar> -->
+				  
+				   <!-- My Schedule-->
+									<li class="dropdown" id="navmyschedule">
+										<a href="#myscheduleModal" class="dropdown-toggle" data-toggle="modal"> My Schedule </a>
+									</li>
+									<!-- End of Forum -->
+
+									<!-- Forum-->
+									<li class="dropdown" id="navforum">
+										<a href="#" class="dropdown-toggle" data-toggle="modal"> Q and A's </a>
+									</li>
+									<!-- End of Forum -->
+
+									<!-- Login-->
+									<li class="dropdown" id="navlogin">
+										<a href="#loginModal" class="dropdown-toggle" data-toggle="modal"> Login </a>
+									</li>
+									<!-- End of Login -->
+
+									<!-- Register-->
+									<li class="dropdown" id="navregister">
+										<a href="#registerModal" class="dropdown-toggle" data-toggle="modal"> Register </a>
+									</li>
+									<!-- End of Register-->
+
+									<!-- Username display-->
+									<li class="dropdown">
+										<a href="profile.html" id ="usernamedisplay" data-send-to-profile="123456" class="dropdown-toggle"> Username </a>
+									</li>
+									<!-- End of username display -->
+
+									<!-- Logout-->
+									<li class="dropdown" id="navlogout">
+										<a href="#logoutModal" onclick="Logout();return false;" class="dropdown-toggle"> Logout </a>
+									</li>
+									<!-- End of Logout -->
+
+							 </ul>
+						</div> <!-- Collapsed Menu -->
+					</div> <!--End of container-fluid-->
+			</nav> <!-- End of NavBar-->
+			<!-- Navigation -->
+      
+    </div>
+    <div class="underconstruction">
+      <img src="img/page-under-construction.jpg">
+    </div>
+
+  </body>
+
+
+  <footer class="mdl-mini-footer navbar-fixed-bottom">
+      <div class="mdl-mini-footer__left-section">
+          <div class="mdl-logo">
+              About Us:
+          </div>
+          <ul class="mdl-mini-footer__link-list">
+              <li><a href="./members.html">Members</a></li>
+              <li><a href="./contact.html"><em>Contact</em></a></li>
+          </ul>
+      </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+  <!-- Initialize Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <script>
+
+  var userId = "";
+  var username = "";
+    
+    var config = {
+    apiKey: "AIzaSyCBHKzuKatLk4GZjorFHbPfutXgdDwDBjM",
+    authDomain: "livetutorfinal.firebaseapp.com",
+    databaseURL: "https://livetutorfinal.firebaseio.com",
+    storageBucket: "livetutorfinal.appspot.com",
+    messagingSenderId: "968804506441"
+    };
+    firebase.initializeApp(config);
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+        userId = user.uid;
+        username = user.displayName;
+        LoginSetup();
+      } else {
+      // No user is signed in.
+      }
+    });
+  </script>
+  <script src = "js/main.js"></script>
+  <script src = "js/index.js"></script>
+
+</html>

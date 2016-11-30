@@ -139,14 +139,44 @@
 		}
 	}
 	
+	//Creats new class and edits old classes
 	function newclass(){
 		
 		var userId = firebase.auth().currentUser.uid;
 		
 		var subject = document.getElementById('subject').value;
-		var date = document.getElementById('day').value;
-		var time = document.getElementById('time').value;
+		var sun = document.getElementById('sun');
+		var mon = document.getElementById('mon');
+		var tue = document.getElementById('tue');
+		var wed = document.getElementById('wed');
+		var thur = document.getElementById('thur');
+		var fri = document.getElementById('fri');
+		var sat = document.getElementById('sat');
+		var fromtime = document.getElementById('fromtime').value;
+		var fromzone = document.getElementById('fromzone').value;
+		var totime = document.getElementById('totime').value;
+		var tozone = document.getElementById('tozone').value;
 		var descr = document.getElementById('descr').value;
+		
+		if (subject===""){alert("Subject Required!");return;}
+		
+		var date = "";
+		var time = "";
+		
+		if (sun.checked){date = date + "Sun ";}
+		if (mon.checked){date = date + "Mon ";}
+		if (tue.checked){date = date + "Tue ";}
+		if (wed.checked){date = date + "Wed ";}
+		if (thur.checked){date = date + "Thur ";}
+		if (fri.checked){date = date + "Fri ";}
+		if (sat.checked){date = date + "Sat ";}
+		
+		if (date === ""){date="---";}
+		if (descr === ""){descr="---";}
+		
+		if (fromtime.length < 5){fromtime = " " + fromtime;}
+		
+		time = fromtime + fromzone + " - " + totime + tozone;
 
 		if (add_edit == 1){
 			
@@ -182,8 +212,6 @@
 				RoomId: newroomid
 				});
 		}
-		
-		
 		
 	}
 
@@ -242,9 +270,48 @@
 		editroom = roomidlist[roomidlist.length - i]
 		document.getElementById("title-class-edit").innerHTML = "Edit Class";
 		
+		if (editroom.ClassDay.includes("Sun")){document.getElementById("sun").checked = true;}
+		else {document.getElementById("sun").checked = false;}
+		if (editroom.ClassDay.includes("Mon")){document.getElementById("mon").checked = true;}
+		else {document.getElementById("mon").checked = false;}
+		if (editroom.ClassDay.includes("Tue")){document.getElementById("tue").checked = true;}
+		else {document.getElementById("tue").checked = false;}
+		if (editroom.ClassDay.includes("Wed")){document.getElementById("wed").checked = true;}
+		else {document.getElementById("wed").checked = false;}
+		if (editroom.ClassDay.includes("Thur")){document.getElementById("thur").checked = true;}
+		else {document.getElementById("thur").checked = false;}
+		if (editroom.ClassDay.includes("Fri")){document.getElementById("fri").checked = true;}
+		else {document.getElementById("fri").checked = false;}
+		if (editroom.ClassDay.includes("Sat")){document.getElementById("sat").checked = true;}
+		else {document.getElementById("sat").checked = false;}
+		
+		time1 = editroom.ClassTime.slice(0, 7);
+		time2 = editroom.ClassTime.slice(10, editroom.ClassTime.length);
+		
+		console.log('time1: ' + time1);
+		console.log('time2: ' + time2);
+		
+		fromtime = time1.replace('am',"")
+		fromtime = fromtime.replace(" ","");
+		fromtime = fromtime.replace('pm',"")
+		totime = time2.replace('am',"")
+		totime = totime.replace('pm',"")
+		
+		if (time1.includes('am')){
+			fromzone = "am";
+		}
+		else {fromzone = "pm";}
+		
+		if (time2.includes('am')){
+			tozone = "am";
+		}
+		else {tozone = "pm";}
+		
 		document.getElementById("subject").value = editroom.Subject;
-		document.getElementById("day").value = editroom.ClassDay;
-		document.getElementById("time").value = editroom.ClassTime;
+		document.getElementById("totime").value = totime;
+		document.getElementById("tozone").value = tozone;
+		document.getElementById("fromtime").value = fromtime;
+		document.getElementById("fromzone").value = fromzone;
 		document.getElementById("descr").value = editroom.Description;
 		
 	}
@@ -259,12 +326,22 @@
 	
 	function addclassLayout(){
 		add_edit = 0;
-		document.getElementById("title-class-edit").innerHTML = "Add Class";
+		document.getElementById("title-class-edit").innerHTML = "Create Class";
 		
 		document.getElementById("subject").value = "";
-		document.getElementById("day").value = "";
-		document.getElementById("time").value = "";
+		document.getElementById("sun").checked = false;
+		document.getElementById("mon").checked = false;
+		document.getElementById("tue").checked = false;
+		document.getElementById("wed").checked = false;
+		document.getElementById("thur").checked = false;
+		document.getElementById("fri").checked = false;
+		document.getElementById("sat").checked = false;
+		document.getElementById("fromtime").value = "1:00";
+		document.getElementById("totime").value = "1:00";
+		document.getElementById("fromzone").value = "pm";
+		document.getElementById("tozone").value = "am";
 		document.getElementById("descr").value = "";
+		
 	}
 	
 	function initApp() {

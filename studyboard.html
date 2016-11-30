@@ -361,66 +361,135 @@
 	</div> 
 
 	<!-- Modal -->
-	<div id="editClassModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+  						<div id="editClassModal" class="modal fade" role="dialog">
+  							<div class="modal-dialog">
 
-	<!-- Modal content-->
-			<div class="modal-content">
+  								<!-- Modal content-->
+  								<div class="modal-content">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h3 id="title-class-edit" class="modal-title">Edit Class</h3>
-				</div>
-				<div class="modal-body">
-					<form role="form">
-						<h5>Subject:</h5>
-						<div class="row">
-							<div class="form-group col-sm-6">
-								<input type="text" name="subject" id="subject" class="form-control input-sm" placeholder="Class Subject...">
-								</div>
-							</div>
-							<h5>Days Available:</h5>
-							<div class="row">
-								<div class="form-group col-sm-6">
-									<input type="text" name="day" id="day" class="form-control input-sm" placeholder="Days Available...">
-									</div>
-								</div>
-								<h5>Time:</h5>
-								<div class="row">
-									<div class="form-group col-sm-6">
-										<input type="text" name="time" id="time" class="form-control input-sm" placeholder="Time Available...">
-										</div>
-									</div>
-									<h5>Class Description:</h5>
-								<div class="row">
-										<div class="form-group col-sm-6">
-											<input type="text" name="descr" id="descr" class="form-control input-sm" placeholder="Class Description...">
-										</div>
-								</div>
+  									<div class="modal-header">
+  										<button type="button" class="close" data-dismiss="modal">&times;</button>
+  										<h3 id="title-class-edit" class="modal-title">Edit Class</h3>
+  									</div>
+  									<div class="modal-body">
+  										<form role="form">
+  											<h5>Subject:</h5>
+  											<div class="row">
+  												<div class="form-group col-sm-6">
+  													<input type="text" name="subject" id="subject" class="form-control input-sm" placeholder="Class Subject...">
+  													</div>
+  												</div>
+  											<h5>Days Available:</h5>
+  											<div class="row" style="margin-left:10px">
+													<label class="checkbox-inline">
+														<input id="sun" type="checkbox" value="">Sun
+													</label>
+  												    <label class="checkbox-inline">
+														<input id="mon" type="checkbox" value="">Mon
+													</label>
+													<label class="checkbox-inline">
+														<input id="tue" type="checkbox" value="">Tue
+													</label>
+													<label class="checkbox-inline">
+														<input id="wed" type="checkbox" value="">Wed
+													</label>
+													<label class="checkbox-inline">
+														<input id="thur" type="checkbox" value="">Thur
+													</label>
+													<label class="checkbox-inline">
+														<input id="fri" type="checkbox" value="">Fri
+													</label>
+													<label class="checkbox-inline">
+														<input id="sat" type="checkbox" value="">Sat
+													</label>
+  												</div>
+  											<h5>Time:</h5>
+  											<div class="row">
+												<div class="col-sm-1" style="margin-top:10px">
+												from:
+												</div>
+												
+  												<div class="col-sm-3">
+  													<select class="form-control col-sm-12" id="fromtime">
+														<option>1:00</option>
+														<option>2:00</option>
+														<option>3:00</option>
+														<option>4:00</option>
+														<option>5:00</option>
+														<option>6:00</option>
+														<option>7:00</option>
+														<option>8:00</option>
+														<option>9:00</option>
+														<option>10:00</option>
+														<option>11:00</option>
+														<option>12:00</option>
+													</select>
+  												</div>
+												<div class="col-sm-2">
+  													<select class="form-control col-sm-12" id="fromzone">
+														<option>am</option>
+														<option>pm</option>
+													</select>
+  												</div>
+												
+												<div class="col-sm-1" style="margin-top:10px">
+												to:
+												</div>
+												
+												<div class="col-sm-3">
+  													<select class="form-control col-sm-12" id="totime">
+														<option>1:00</option>
+														<option>2:00</option>
+														<option>3:00</option>
+														<option>4:00</option>
+														<option>5:00</option>
+														<option>6:00</option>
+														<option>7:00</option>
+														<option>8:00</option>
+														<option>9:00</option>
+														<option>10:00</option>
+														<option>11:00</option>
+														<option>12:00</option>
+													</select>
+  												</div>
+												<div class="col-sm-2">
+  													<select class="form-control col-sm-12" id="tozone">
+														<option>pm</option>
+														<option>am</option>
+													</select>
+  												</div>
+											</div>
+  											<h5>Class Description:</h5>
+  											<div class="row">
+  												<div class="form-group col-sm-12">
+														<textarea id="descr" class="form-control" rows="5" placeholder="Class Description..." id="comment"></textarea>
+												</div>
+  											</div>
+  											
+  											<div class="row">
+  												<div class="col-xs-6 col-sm-6 col-md-6">
+  													<div class="form-group">
+  														<a id="submitbutton" href="#myscheduleModal" class="btn btn-info btn-block" onclick="newclass();" data-toggle="modal" data-dismiss="modal">SUBMIT</a>
+  													</div>
+  												</div>
+  												
+  												<div class="col-xs-6 col-sm-6 col-md-6">
+  													<div class="form-group">
+  														<a id="deletebutton" href="#" class="btn btn-info btn-block" onclick="deleteClass();" data-toggle="modal" data-dismiss="modal">DELETE</a>
+  													</div>
+  												</div>
+  											</div>
+  											
+  											</form>
+  										</div>
+  													<!--Footer if needed-->
+  													<!-- <div class="modal-footer">
+  																	</div> -->
+  												</div>
 
-								<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<a id="submitbutton" href="#myscheduleModal" class="btn btn-info btn-block" onclick="newclass();" data-toggle="modal" data-dismiss="modal">SUBMIT</a>
-										</div>
-								</div>
-
-								<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<a id="deletebutton" href="#" class="btn btn-info btn-block" onclick="deleteClass();" data-toggle="modal" data-dismiss="modal">DELETE</a>
-										</div>
-								</div>
-							</div>
-
-						</form>
-					</div>
-			<!--Footer if needed-->
-			<!-- <div class="modal-footer"></div> -->
-			</div>
-
-		</div>
-	</div>
-					<!-- Modal -->
+  											</div>
+  										</div>
+  										<!-- Modal -->
 
 					<!-- Modal -->
 					<div id="myscheduleModal" class="modal fade" role="dialog">

@@ -132,6 +132,9 @@ function init(){
 			{
 				var userId = firebase.auth().currentUser.uid;
 			}
+			else {
+				userId = username;
+			}
 			
 			var findHost = firebase.database().ref('StudyRooms/' + roomid + "/HostID");
 			
@@ -148,7 +151,17 @@ function init(){
 					permission = "0";
 				}
 				
+				if (permission === "0")
+				{
+					//ChangePermission
+					firebase.database().ref('/StudyRooms/' + roomid + '/UserList/' + userId + '/permission').on('value', function (snapshot1){
+							permission = snapshot1.val();
+						});
+				}	
+				
 				});
+				
+
 			
 			//Set on disconnect Function
 			firebase.database().ref('/StudyRooms/' + roomid + '/UserList/' + user.uid).onDisconnect().remove();
@@ -285,6 +298,22 @@ function disconnection(){
 			msg.appendChild(icon);
 		}
 		
+	else if (newchat.includes('@#PERMABLE#@')){
+			chatreplace = newchat.replace("@#PERMABLE#@", "");
+			var permmessage = document.createElement('div');
+			permmessage.innerHTML = chatreplace;
+			permmessage.style.color = "green";
+			msg.appendChild(permmessage);
+		}
+		
+	else if (newchat.includes('@#PERMDISABLE#@')){
+			chatreplace = newchat.replace("@#PERMDISABLE#@", "");
+			var permmessage = document.createElement('div');
+			permmessage.innerHTML = chatreplace;
+			permmessage.style.color = "red";
+			msg.appendChild(permmessage);
+		}
+		
 	else{
 		msg.appendChild(document.createTextNode(newchat));
 	}
@@ -328,26 +357,50 @@ function createEventListeners(){
 //This Code Handles Current Users in Chat
 //=======================================================
 
-  function addListOption (obj) {
+	function changeperm(u,i,uname){
+		
+		if (userarray[i].permission === "0"){userarray[i].permission = "1";   sendMessage("@#PERMABLE#@ Host has given " + uname + " permission to use board!");}
+		else {userarray[i].permission = "0"; sendMessage("@#PERMDISABLE#@ Host has taken away " + uname + " permission to use board!");}
+		
+		firebase.database().ref('/StudyRooms/' + roomid + '/UserList/' + u).child('permission').set(userarray[i].permission);
+		
+	}
+	
+  function addListOption (obj, i) {
     var li = document.createElement("li");
+	var user = firebase.auth().currentUser;
     li.className = "userlistItem";
     li.id = obj.userID;
 	li.addEventListener("dblclick", function (){window.location.href = "profile.html?id=" + obj.userID});
-	li.addEventListener("click", function (){document.getElementById('chatOut').value = document.getElementById('chatOut').value + '@' + obj.username});
 	if (host === obj.userID)
 	{
 		li.style.fontWeight = 'bold';
 		li.style.color = "#8b0000";
-		li.appendChild(document.createTextNode("Host: " + obj.username));
+		li.appendChild(document.createTextNode(" Host: " + obj.username));
 	}
 	else 
 	{	
-		li.appendChild(document.createTextNode(obj.username));
+		if (user != null){
+		if (host === user.uid)
+			{
+				var checkperm = document.createElement('input');
+				checkperm.setAttribute('type','checkbox');
+				checkperm.addEventListener('change', function () {changeperm(obj.userID, i, obj.username)});
+				if (obj.permission==="1"){
+					checkperm.checked = true;
+				}
+				li.appendChild(checkperm);
+			}
+		}
+		
+		li.appendChild(document.createTextNode(" " + obj.username));
 	}
   
     // Append the new message to the chat
     var userlist = document.getElementById("userList");
     userlist.appendChild(li);
+	
+	
   }
   
   function removeListOption (value) {
@@ -376,7 +429,7 @@ function createEventListeners(){
   function populateList () {
     clearList();
     for (var i = 0; i < userarray.length; i++) {
-      addListOption (userarray[i]);
+      addListOption (userarray[i], i);
     }
   }
   
@@ -486,17 +539,22 @@ function createEventListeners(){
 				viewcount.innerHTML = data.numberOfUsers;
 				var desc = document.getElementById('desc');
 				desc.innerHTML = data.Description;
+				var ctime = document.getElementById('classtime');
+				ctime.innerHTML = data.ClassTime;
+				var cday = document.getElementById('classdays');
+				cday.innerHTML = data.ClassDay;
 				
 				firebase.database().ref('users/' + data.HostID).once('value', function (snapshot){
 					var aboutme = document.getElementById('aboutme');
-					aboutme.innerHTML = snapshot.val().AboutMe;;
+					aboutme.innerHTML = snapshot.val().AboutMe;
+					if (snapshot.val().AboutMe == ""){aboutme.innerHTML = "---";}
 					});
 			}
 			
 			});
 		
 			//Checks database for removed users from userlist
-		firebase.database().ref('StudyRooms/').on('child_removed', function (snapshot){
+			firebase.database().ref('StudyRooms/').on('child_removed', function (snapshot){
 				data = snapshot.val();
 				if (data.RoomId != null)
 					{

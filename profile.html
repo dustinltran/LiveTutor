@@ -391,6 +391,58 @@
   										<!-- Modal -->
 
 					<!-- Modal -->
+					<div id="myscheduleModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h3 class="modal-title">My Schedule</h3>
+								</div>
+
+								<div class="modal-body">
+									<form role="form">
+										<h4 class="modal-title">These are the classes you Tutor:</h4>
+										<h4> </h4>
+
+										<table id="myschedule-table" class="table table-bordered" >
+											<thead>
+												<tr>
+													<th>Subject</th>
+													<th>Day</th>
+													<th>Time</th>
+													<th>Description</th>
+													<th>Join</th>
+													<th>Edit</th>
+												</tr>
+											</thead>
+											<tbody id="myschedule-tablebody">
+
+											</tbody>
+										</table>
+
+										<h4> </h4>
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<a id="addclass" href="#editClassModal" class="btn btn-info btn-block" onclick="addclassLayout();" data-toggle="modal" data-dismiss="modal">Create Class</a>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!--Footer if needed-->
+								<!-- <div class="modal-footer">
+                    </div> -->
+							</div>
+
+						</div>
+					</div>
+					<!-- Modal -->
+
+					<!-- Modal -->
 					<div id="loginModal" class="modal fade" role="dialog">
 						<div class="modal-dialog">
 
@@ -472,6 +524,9 @@
 																	<a href="#loginModal" class="dropdown-toggle" data-toggle="modal" data-dismiss="modal"><small>Have an account?</small></a>
 																</form>
 															</div>
+															<!--Footer if needed-->
+															<!-- <div class="modal-footer">
+                    </div> -->
 														</div>
 
 													</div>

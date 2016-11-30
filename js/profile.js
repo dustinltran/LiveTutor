@@ -8,7 +8,8 @@
 		
 		var newmessageref = firebase.database().ref('users/' + qsParm.id + '/Messages').push({
 			user: username,
-			message: outgoing.value
+			message: outgoing.value,
+			timestamp: getDate()
 			});
 			
 		outgoing.value = "";
@@ -104,6 +105,20 @@
 	}
 
 
+	//This function does not work for multiple timezones
+	function getDate(){
+		var date = new Date();
+		dateSeconds = date.getSeconds();
+		if (dateSeconds < 10){dateSeconds = "0" + dateSeconds;}
+		dateMinutes = date.getMinutes();
+		if (dateMinutes < 10){dateMinutes = "0" + dateMinutes;}
+		dateHour = date.getHours();
+		timeslot = "am";
+		if (dateHour > 12){dateHour = dateHour - 12; timeslot = "pm"}
+		date = dateHour + ":" + dateMinutes + ":" + date.getSeconds() + timeslot + " " + date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear();
+		return date;
+	}
+	
 	function createEventListeners(){
 		
 		//Listens for new messages
@@ -112,7 +127,7 @@
 			data = snapshot.val();
 			var messageboard = document.getElementById('messages');
 			var message = document.createElement('li');
-			message.innerHTML = data.user + ": " + data.message;
+			message.innerHTML = data.user + ": " + data.message + " " + data.timestamp;
 			messageboard.insertBefore(message, messageboard.childNodes[0]);
 			
 			});

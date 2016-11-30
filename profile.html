@@ -43,21 +43,21 @@
 			border:2px solid #000000;
 		}
 		
-		#profile-inner-body-info{
-			background:grey;
-			margin-top:0px;
-		}
-		
-		#profile-board-info-box{
-			height:400px;
-			background:white;
-			margin-top:70px;
-			margin-bottom:10px;
+		#profilehead{
+			position:fixed;
+			background:#555555;
+			border-bottom: 30px solid #333333;
+			top:6%;
+			height:170px;
+			color: white;
 		}
 		
 		#profile-messages-body{
+			border-left: 3px solid #DDDDDD;
+			border-right: 3px solid #DDDDDD;
 			background:white;
 			margin-top:0px;
+			color: grey;
 		}
 		
 		
@@ -68,7 +68,8 @@
 			margin-bottom:10px;
 			overflow:scroll;
 			overflow-x: hidden;
-			border-left: 1px solid grey;
+			border-left: 2px solid grey;
+			color: grey;
 		}
 		
 		#profile-searchlist{
@@ -84,6 +85,38 @@
 		#messageinput{
 			margin-top:10px;
 		}
+		
+		#profilepic{
+			float:left;
+		}
+		
+		#nametag{
+			float:left;
+			font-size:300%;
+			margin-top:50px;
+		}
+		
+		#profile-aboutme-topper{
+			color: white;
+			font-size:250%;
+			margin-top:220px;
+			background:#333333;
+			padding:20px;
+		}
+		
+		#profile-inner-body-info{
+			height:40px;
+			background:#EEEEEE;
+			margin-bottom:10px;
+			border-bottom: 3px solid #AAAAAA;
+			color: grey;
+			
+		}
+		
+		#messages{
+			list-style-type:none; 
+		}
+		
 		
 		
 	</style>
@@ -171,78 +204,41 @@
 				      <!-- PROFILE -->
 
      <!-- Under Whiteboard Studd-->
-	<div class="row">
-		<div id="profile-inner-body-info" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-			<div id="profile-board-info-box" class="col-xs-6 col-sm-6 col-md-6">
-				<font color="grey">
-					<div class="row">
-						<div style="border-bottom:2px solid grey;" class="col-xs-12 col-sm-12 col-md-12">
-						</div>
-						
-					</div>
-					
-					<div id="myprofile">
-						<b>User Profile</b>
-						</div>
-						<div id="myprofile1">
-							<i class="material-icons" style = " font-size: 400%">account_circle</i> <span <h1 id = "title" style = "font-size: 300%"></h1>></span>
-            
-							<p><b>Name:</b></p>
-							<p id = "nametag"></p>
-
-					</div>
-					
-					<div class="col-xs-12 col-sm-12 col-md-12">
-						<h4> About Me:</h4> 
-						<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
-						
-						<div class="mdl-card__actions mdl-card--border intro-card-actions">
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="exit-profile">
-                                Edit
-                              </a>
-							
-							<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="exit-profile">
-                                Save
-                              </a>
-							  
-							 
-                        </div>
-					
-					</div>
-					
-				</font>
-				
-			</div>
-			
-			<div id="profile-rooms-box" class="col-xs-6 col-sm-6 col-md-6">
-					<div id="classes-div"><h3>Tutor Schedule:</h3></div>
-								
-					<ul id="profile-searchlist">
-					</ul>
-				
-			</div>
+	
+	<div id="profile-aboutme-topper" class="col-xs-12">
+			<span class="glyphicon glyphicon-user"></span>
+			About Me
+	</div>
 		
-		</div>
+	<div id="profile-inner-body-info" class="col-md-12">
+			<h4 id="aboutme">This is where you can tell us about yourself!</h4> 
+		
 	</div>
 	
 	<!-- Message Board-->
-	<div class="row">
-		<div id="profile-messages-body" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-			<div id="message-box" class="col-xs-10 col-sm-10 col-md-10">
-				<input type="text" id="messageinput" class="form-control" placeholder=":) Message..."/>	
-				<button type="button" onclick="sendMessage();" class="btn btn-info">SEND</button>
-			<div>
-			
-			<ul id="messages" class="col-xs-10 col-sm-10 col-md-10">
-				<li></li>
-			</ul>
+	<div id="profile-messages-body" class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
+		<div id="message-box" class="col-xs-10 col-sm-10 col-md-10">
+			<input type="text" id="messageinput" class="form-control" placeholder=":) Message..."/>	
+			<button type="button" onclick="sendMessage();" class="btn btn-info">POST</button>
+			<div>	
+				<ul id="messages" class="col-xs-10 col-sm-10 col-md-10">
+					<li></li>
+				</ul>
+			</div>
 		</div>
 	</div>
+	
+	<div id="profilehead" class="col-xs-12 ">
+			<i id="profilepic" class="material-icons" style = " font-size: 1000%">account_circle</i>
+			<b id = "nametag"></b>
+	</div>
+	
 				
 	<!-- Modal -->
 	<div id="editClassModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
+		
 	<!-- Modal content-->
 			<div class="modal-content">
 
